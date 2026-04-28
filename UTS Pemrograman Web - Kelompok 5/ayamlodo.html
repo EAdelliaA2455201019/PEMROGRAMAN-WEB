@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayam Lodho Khas Blitar — Legenda Rasa dari Tanah Blitar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,900;1,300;1,600&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --amber:      #7a3a0a;
+            --amber-mid:  #a85420;
+            --amber-light:#d4813a;
+            --peanut:     #8b5e1a;
+            --gold:       #c8920a;
+            --saffron:    #f0b22a;
+            --cream:      #fdfaf2;
+            --warm:       #f8f0e0;
+            --text:       #1a0e06;
+            --muted:      #6b4a2a;
+        }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--cream);
+            color: var(--text);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 400;
+            overflow-x: hidden;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://i.pinimg.com/1200x/12/b5/cb/12b5cb5eb756dfea63c96cfd839eff46.jpg');
+            background-size: 65%;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            filter: brightness(.55) saturate(1.2);
+            transform: scale(1.0);
+            animation: none;
+        }
+
+        @keyframes zhero { to { transform: scale(1); } }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(20,8,4,.2) 0%,
+                transparent 28%,
+                rgba(60,20,5,.65) 68%,
+                rgba(40,12,2,.95) 100%
+            );
+        }
+
+        .hero-tex {
+            position: absolute;
+            inset: 0;
+            opacity: .03;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='30' fill='none' stroke='%23fff' stroke-width='1'/%3E%3Ccircle cx='40' cy='40' r='15' fill='none' stroke='%23fff' stroke-width='1'/%3E%3C/svg%3E");
+            background-size: 80px 80px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 8vw 70px;
+            color: #fff;
+            max-width: 740px;
+            animation: fadeUp 1s .1s both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity:0; transform:translateY(38px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: .7rem;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+            color: var(--saffron);
+            border-top: 1px solid rgba(240,178,42,.4);
+            border-bottom: 1px solid rgba(240,178,42,.4);
+            padding: 6px 20px;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .hero-content h1 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(3rem, 8.5vw, 6.2rem);
+            font-weight: 900;
+            line-height: .97;
+            letter-spacing: -.02em;
+            text-shadow: 0 4px 30px rgba(0,0,0,.5);
+        }
+
+        .hero-content h1 em {
+            display: block;
+            font-size: .38em;
+            font-weight: 300;
+            font-style: italic;
+            color: rgba(212,146,10,.85);
+            letter-spacing: .06em;
+            margin-top: 12px;
+        }
+
+        .hero-sub {
+            margin-top: 20px;
+            font-size: 1rem;
+            opacity: .72;
+            max-width: 460px;
+            line-height: 1.72;
+            font-weight: 300;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 28px; left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: rgba(212,146,10,.55);
+            font-size: .62rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            text-align: center;
+            animation: bob 2.2s ease-in-out infinite;
+        }
+
+        .scroll-hint::after {
+            content: '';
+            display: block;
+            width: 1px; height: 38px;
+            background: linear-gradient(to bottom, rgba(212,146,10,.5), transparent);
+            margin: 6px auto 0;
+        }
+
+        @keyframes bob {
+            0%,100% { transform: translateX(-50%) translateY(0); }
+            50%      { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ── STAT STRIP ── */
+        .stats {
+            background: var(--amber);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            padding: 22px 36px;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,.08);
+            flex: 1;
+            min-width: 130px;
+        }
+
+        .stat:last-child { border-right: none; }
+
+        .stat .v {
+            font-family: 'Fraunces', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--saffron);
+            display: block;
+            line-height: 1;
+        }
+
+        .stat .l {
+            font-size: .66rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.42);
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* ── ARTICLE ── */
+        .article {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 80px 28px 100px;
+        }
+
+        /* dropcap intro */
+        .intro {
+            font-size: clamp(1.08rem, 2vw, 1.28rem);
+            line-height: 1.9;
+            color: var(--amber);
+            border-left: 3px solid var(--amber-light);
+            padding-left: 26px;
+            margin-bottom: 52px;
+            font-family: 'Fraunces', serif;
+            font-weight: 300;
+        }
+
+        .intro::first-letter {
+            font-family: 'Fraunces', serif;
+            font-size: 5.4rem;
+            font-weight: 900;
+            color: var(--amber-mid);
+            float: left;
+            line-height: .76;
+            margin: 8px 14px 0 -26px;
+        }
+
+        p {
+            font-size: 1.04rem;
+            line-height: 1.88;
+            color: #2a1206;
+            margin-bottom: 26px;
+        }
+
+        /* ── SECTION HEAD ── */
+        .s-head {
+            font-family: 'Fraunces', serif;
+            font-size: 1.85rem;
+            font-weight: 600;
+            color: var(--amber);
+            margin: 64px 0 18px;
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .s-head::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 46px; height: 2px;
+            background: linear-gradient(to right, var(--amber-light), var(--saffron));
+        }
+
+        /* ── PULL QUOTE ── */
+        .pull {
+            background: var(--amber);
+            border-radius: 10px;
+            padding: 46px 52px;
+            margin: 56px -16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pull::before {
+            content: '"';
+            font-family: 'Fraunces', serif;
+            font-size: 12rem;
+            color: rgba(212,129,58,.12);
+            position: absolute;
+            top: -40px; left: 18px;
+            line-height: 1;
+        }
+
+        .pull p {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            font-weight: 300;
+            line-height: 1.65;
+            color: #f8ead8;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pull cite {
+            display: block;
+            margin-top: 18px;
+            font-size: .7rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--saffron);
+            font-style: normal;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── SIDE-BY-SIDE LAYOUT ── */
+        .side-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 36px;
+            align-items: center;
+            margin: 52px 0;
+        }
+
+        .side-layout.reverse { direction: rtl; }
+        .side-layout.reverse > * { direction: ltr; }
+
+        .side-img {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 340px;
+        }
+
+        .side-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .55s ease;
+        }
+
+        .side-img:hover img { transform: scale(1.06); }
+
+        .side-img .cap {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 12px 16px;
+            background: linear-gradient(to top, rgba(40,12,2,.72), transparent);
+            color: rgba(255,255,255,.82);
+            font-size: .74rem;
+            font-style: italic;
+        }
+
+        .side-text h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            color: var(--amber);
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+
+        .side-text p { margin-bottom: 16px; }
+        .side-text p:last-child { margin-bottom: 0; }
+
+        /* ── INGREDIENT PILLS ── */
+        .ingredient-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            color: var(--peanut);
+            margin: 44px 0 18px;
+            font-weight: 600;
+        }
+
+        .pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .pill {
+            background: var(--warm);
+            border: 1px solid rgba(168,84,32,.25);
+            color: var(--amber);
+            padding: 7px 18px;
+            border-radius: 50px;
+            font-size: .85rem;
+            font-weight: 500;
+            transition: background .2s, border-color .2s;
+        }
+
+        .pill:hover {
+            background: var(--amber-mid);
+            color: #fff;
+            border-color: var(--amber-mid);
+        }
+
+        /* ── LAUK CARDS ── */
+        .lauks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin: 40px 0;
+        }
+
+        .lauk {
+            background: var(--warm);
+            border-radius: 10px;
+            padding: 24px 20px;
+            border: 1px solid rgba(168,84,32,.15);
+            transition: transform .2s, box-shadow .2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lauk::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--amber-mid), var(--saffron));
+        }
+
+        .lauk:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 36px rgba(120,60,10,.15);
+        }
+
+        .lauk h3 {
+            font-family: 'Fraunces', serif;
+            font-size: .98rem;
+            color: var(--amber);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .lauk p {
+            font-size: .82rem;
+            line-height: 1.5;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* ── ORNAMENT ── */
+        .orn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 60px 0;
+        }
+
+        .orn::before, .orn::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+        }
+
+        .orn::before { background: linear-gradient(to right, transparent, var(--amber-light)); }
+        .orn::after  { background: linear-gradient(to left,  transparent, var(--amber-light)); }
+
+        .orn span { color: var(--amber-light); font-size: .9rem; letter-spacing: .4em; }
+
+        /* ── INFO BOX ── */
+        .info-box {
+            background: var(--warm);
+            border: 1px solid rgba(168,84,32,.2);
+            border-radius: 10px;
+            padding: 36px 40px;
+            margin: 48px 0;
+        }
+
+        .info-box h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            color: var(--amber);
+            margin-bottom: 22px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(168,84,32,.2);
+            font-weight: 600;
+        }
+
+        .info-row {
+            display: flex;
+            gap: 16px;
+            padding: 11px 0;
+            border-bottom: 1px solid rgba(168,84,32,.08);
+            font-size: .93rem;
+        }
+
+        .info-row:last-child { border-bottom: none; }
+
+        .info-row .lbl {
+            min-width: 140px;
+            color: var(--muted);
+            font-size: .76rem;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding-top: 2px;
+        }
+
+        .info-row .val { color: var(--text); line-height: 1.55; }
+
+        /* ── MAP ── */
+        .map-wrap { margin: 56px 0 0; }
+
+        .map-wrap iframe {
+            width: 100%;
+            height: 380px;
+            border: 0;
+            border-radius: 10px;
+            display: block;
+            margin-top: 22px;
+            box-shadow: 0 8px 32px rgba(120,60,10,.14);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--amber);
+            text-align: center;
+            padding: 34px 16px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--amber-mid), var(--saffron), var(--gold), var(--saffron), var(--amber-mid));
+        }
+
+        footer p {
+            font-size: .78rem;
+            letter-spacing: .1em;
+            color: rgba(255,255,255,.38);
+            margin: 0;
+        }
+
+        footer strong { color: var(--saffron); }
+
+        @media (max-width: 620px) {
+            .side-layout { grid-template-columns: 1fr; }
+            .side-layout.reverse { direction: ltr; }
+            .side-img { height: 220px; }
+            .pull { padding: 30px 24px; margin: 40px 0; }
+            .pull p { font-size: 1.2rem; }
+            .info-box { padding: 24px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-tex"></div>
+
+    <div class="hero-content">
+        <div class="badge">Kuliner Legendaris · Blitar, Jawa Timur</div>
+        <h1>
+            Ayam Lodho
+            <em>Legenda Rasa dari Tanah Blitar</em>
+        </h1>
+        <p class="hero-sub">
+            Ayam kampung dipanggang hingga beraroma asap, lalu dibalut kuah santan rempah yang kental dan gurih — sebuah warisan kuliner Jawa Timur yang tak tertandingi.
+        </p>
+    </div>
+
+    <div class="scroll-hint">Jelajahi</div>
+</div>
+
+<!-- ── STATS ── -->
+<div class="stats">
+    <div class="stat">
+        <span class="v">Kampung</span>
+        <span class="l">Jenis Ayam</span>
+    </div>
+    <div class="stat">
+        <span class="v">2 Tahap</span>
+        <span class="l">Proses Masak</span>
+    </div>
+    <div class="stat">
+        <span class="v">Santan</span>
+        <span class="l">Kuah Khas</span>
+    </div>
+    <div class="stat">
+        <span class="v">Rp 25rb+</span>
+        <span class="l">Mulai Dari</span>
+    </div>
+</div>
+
+<!-- ── ARTIKEL ── -->
+<div class="article">
+
+    <p class="intro">
+        Ketika senja mulai turun di Blitar, warung-warung kecil di sudut kota mulai mengepulkan aroma asap panggang yang berpadu dengan wangi santan dan rempah. Itulah Ayam Lodho — bukan sekadar lauk, melainkan sebuah kisah panjang tentang tradisi memasak yang telah mengakar dalam jiwa masyarakat Blitar dan Tulungagung selama berabad-abad.
+    </p>
+
+    <p>
+        Yang membedakan Ayam Lodho dari masakan ayam lainnya adalah dua tahapan memasaknya yang khas. Pertama, ayam kampung dibakar langsung di atas bara api hingga kulitnya kecoklatan dan beraroma asap. Baru kemudian, ayam yang sudah matang itu dimasak kembali dalam kuah santan kental berbumbu lengkap — menghasilkan perpaduan tekstur dan rasa yang luar biasa kompleks namun harmonis.
+    </p>
+
+    <!-- SIDE LAYOUT 1 -->
+    <div class="side-layout">
+        <div class="side-img">
+            <img src="https://i.pinimg.com/736x/bb/72/a5/bb72a5a82c1d463d790b2cc0cb661f15.jpg" alt="Ayam Lodho Blitar">
+            <div class="cap">Ayam Lodho Blitar — kuah santan kental berwarna keemasan</div>
+        </div>
+        <div class="side-text">
+            <h3>Warisan Leluhur yang Tak Lekang Waktu</h3>
+            <p>
+                Ayam Lodho sudah menjadi bagian dari kehidupan masyarakat Blitar selama bergenerasi. Setiap warung, setiap keluarga, bahkan setiap daerah memiliki racikan bumbunya sendiri yang dijaga kerahasiaannya dan diwariskan turun-temurun.
+            </p>
+            <p>
+                Hidangan ini biasanya disajikan dalam acara-acara penting seperti kenduri, syukuran, dan pesta pernikahan — menandakan bahwa Ayam Lodho bukan sekadar makanan biasa, melainkan simbol kebersamaan dan kehangatan keluarga Jawa Timur.
+            </p>
+        </div>
+    </div>
+
+    <div class="pull">
+        <p>"Sekali mencicipi Ayam Lodho Blitar, aroma asap panggang yang berpadu dengan gurihnya santan rempah itu akan terus menghantui selera — dan membuatmu selalu ingin kembali."</p>
+        <cite>— Catatan Kuliner Jawa Timur</cite>
+    </div>
+
+    <h2 class="s-head">Rahasia Bumbu Rempah Lodho</h2>
+
+    <p>
+        Jiwa dari Ayam Lodho terletak pada bumbu santannya yang kaya rempah. Diracik dari bawang merah, bawang putih, cabai merah, kemiri, kunyit, serai, lengkuas, daun salam, dan daun jeruk purut — semua dihaluskan dan ditumis hingga harum sebelum dicampur santan kelapa segar. Proses memasak yang perlahan di atas api kecil memastikan rempah meresap sempurna ke dalam daging ayam yang sudah bercita rasa asap.
+    </p>
+
+    <!-- SIDE LAYOUT 2 -->
+    <div class="side-layout reverse">
+        <div class="side-img">
+            <img src="https://i.pinimg.com/1200x/f6/7b/56/f67b56dd1fe7a59dd4410fb3ca8df0d4.jpg" alt="Proses memasak Ayam Lodho">
+            <div class="cap">Kuah santan kental disiramkan di atas ayam kampung yang telah dipanggang</div>
+        </div>
+        <div class="side-text">
+            <h3>Teknik Panggang yang Menjadi Kunci</h3>
+            <p>
+                Proses pembakaran adalah tahapan yang paling menentukan karakter Ayam Lodho. Ayam kampung — yang dagingnya lebih padat dan gurih dibanding ayam broiler — dibakar di atas bara arang hingga kulitnya kecoklatan merata.
+            </p>
+            <p>
+                Proses ini tidak hanya menambah aroma asap yang khas, tetapi juga mengunci kelezatan alami daging ayam kampung sehingga ketika dimasak dalam santan, dagingnya tetap juicy dan tidak hancur meski dimasak lama.
+            </p>
+        </div>
+    </div>
+
+    <h2 class="s-head">Rempah-Rempah yang Digunakan</h2>
+    <p>Keistimewaan Ayam Lodho terletak pada kekayaan rempahnya — semua segar dipilih dan diracik dengan takaran yang telah teruji selama generasi:</p>
+
+    <div class="pills">
+        <span class="pill">Bawang Merah</span>
+        <span class="pill">Bawang Putih</span>
+        <span class="pill">Cabai Merah</span>
+        <span class="pill">Kemiri</span>
+        <span class="pill">Kunyit</span>
+        <span class="pill">Serai</span>
+        <span class="pill">Lengkuas</span>
+        <span class="pill">Daun Salam</span>
+        <span class="pill">Daun Jeruk</span>
+        <span class="pill">Santan Kelapa</span>
+        <span class="pill">Gula Merah</span>
+        <span class="pill">Garam</span>
+    </div>
+
+    <h2 class="s-head">Pelengkap Sajian Lodho</h2>
+    <p>Ayam Lodho semakin sempurna dengan aneka pelengkap yang memperkaya pengalaman makan secara keseluruhan:</p>
+
+    <div class="lauks">
+        <div class="lauk">
+            <h3>Nasi Gurih</h3>
+            <p>Nasi yang dimasak dengan santan dan sedikit garam — harum dan pulen, pasangan sempurna kuah Lodho.</p>
+        </div>
+        <div class="lauk">
+            <h3>Urap-Urap</h3>
+            <p>Sayuran rebus berbumbu kelapa parut yang menyegarkan dan menyeimbangkan rasa gurih santan.</p>
+        </div>
+        <div class="lauk">
+            <h3>Sambal Cabai</h3>
+            <p>Sambal segar dari cabai rawit yang menambah dimensi pedas untuk yang menyukai sensasi ekstra.</p>
+        </div>
+        <div class="lauk">
+            <h3>Tempe Goreng</h3>
+            <p>Tempe goreng renyah berbumbu sebagai lauk tambahan yang gurih dan mengenyangkan.</p>
+        </div>
+        <div class="lauk">
+            <h3>Kerupuk Udang</h3>
+            <p>Kerupuk renyah yang memberikan tekstur kontras dan sensasi ringan di antara suapan.</p>
+        </div>
+        <div class="lauk">
+            <h3>Jeruk Nipis</h3>
+            <p>Perasan jeruk nipis segar yang mencerahkan seluruh rasa dan memotong gurihnya santan.</p>
+        </div>
+    </div>
+
+    <div class="orn"><span>✦ ✦ ✦</span></div>
+
+    <!-- INFO BOX -->
+    <div class="info-box">
+        <h3>Informasi Kuliner</h3>
+        <div class="info-row">
+            <span class="lbl">Lokasi Populer</span>
+            <span class="val">Warung Biru Blitar, Lodho Ayam Kampung Pak Yusuf, dan berbagai warung di Jl. Veteran & Jl. Mastrip Blitar</span>
+        </div>
+        <div class="info-row">
+            <span class="lbl">Jam Buka</span>
+            <span class="val">Makan siang & malam mulai 10.00 – 21.00 WIB (beberapa warung buka hingga habis)</span>
+        </div>
+        <div class="info-row">
+            <span class="lbl">Harga</span>
+            <span class="val">Mulai Rp 25.000 per porsi · Paket lengkap nasi + urap Rp 35.000 – Rp 50.000</span>
+        </div>
+        <div class="info-row">
+            <span class="lbl">Tips</span>
+            <span class="val">Pesan di hari biasa untuk menghindari antrian panjang, dan minta kuah ekstra untuk pengalaman terbaik</span>
+        </div>
+        <div class="info-row">
+            <span class="lbl">Cocok untuk</span>
+            <span class="val">Makan siang keluarga, makan malam spesial, wisata kuliner, oleh-oleh khas Blitar</span>
+        </div>
+    </div>
+
+    <!-- MAP -->
+    <div class="map-wrap">
+        <h2 class="s-head">Temukan di Peta</h2>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.799!2d112.1729619!3d-8.1124438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78eb8a22989c53%3A0x30f5f4b313ee71aa!2sLodho%20Ayam%20Kampung%20Khas%20Blitar%20(Warung%20Biru)!5e0!3m2!1sid!2sid!4v1710000000000"
+            allowfullscreen=""
+            loading="lazy"
+            title="Lokasi Warung Ayam Lodho Blitar">
+        </iframe>
+    </div>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <p>Artikel Kuliner &nbsp;·&nbsp; <strong>Ayam Lodho Khas Blitar</strong> &nbsp;·&nbsp; Jawa Timur, Indonesia</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outbound & Camping Blitar — Petualangan Alam di Bumi Bung Karno</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,900;1,300;1,600&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pine:       #1a3d1f;
+            --pine-mid:   #2e6b35;
+            --pine-light: #55a05e;
+            --earth:      #6b4a1a;
+            --gold:       #c8920a;
+            --saffron:    #f0b22a;
+            --night:      #0d1f10;
+            --cream:      #f5f8f2;
+            --warm:       #edf2e8;
+            --text:       #0e1a0f;
+            --muted:      #4a6b4e;
+        }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--cream);
+            color: var(--text);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 400;
+            overflow-x: hidden;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://www.nativeindonesia.com/foto/2023/04/berkemah-di-hutan-pinus-loji.jpg');
+            background-size: cover;
+            background-position: center 40%;
+            filter: brightness(.48) saturate(1.3);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(10,20,8,.2) 0%,
+                transparent 30%,
+                rgba(13,31,16,.6) 65%,
+                rgba(10,25,12,.96) 100%
+            );
+        }
+
+        .hero-tex {
+            position: absolute;
+            inset: 0;
+            opacity: .035;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 5 L30 55 M5 30 L55 30 M15 15 L45 45 M45 15 L15 45' stroke='%23fff' stroke-width='.5' fill='none'/%3E%3C/svg%3E");
+            background-size: 60px 60px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 8vw 70px;
+            color: #fff;
+            max-width: 760px;
+            animation: fadeUp 1s .1s both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity:0; transform:translateY(38px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: .7rem;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+            color: var(--saffron);
+            border-top: 1px solid rgba(240,178,42,.4);
+            border-bottom: 1px solid rgba(240,178,42,.4);
+            padding: 6px 20px;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .hero-content h1 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(2.8rem, 8vw, 5.8rem);
+            font-weight: 900;
+            line-height: .97;
+            letter-spacing: -.02em;
+            text-shadow: 0 4px 30px rgba(0,0,0,.5);
+        }
+
+        .hero-content h1 em {
+            display: block;
+            font-size: .38em;
+            font-weight: 300;
+            font-style: italic;
+            color: rgba(240,178,42,.85);
+            letter-spacing: .06em;
+            margin-top: 12px;
+        }
+
+        .hero-sub {
+            margin-top: 20px;
+            font-size: 1rem;
+            opacity: .72;
+            max-width: 480px;
+            line-height: 1.72;
+            font-weight: 300;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 28px; left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: rgba(240,178,42,.55);
+            font-size: .62rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            text-align: center;
+            animation: bob 2.2s ease-in-out infinite;
+        }
+
+        .scroll-hint::after {
+            content: '';
+            display: block;
+            width: 1px; height: 38px;
+            background: linear-gradient(to bottom, rgba(240,178,42,.5), transparent);
+            margin: 6px auto 0;
+        }
+
+        @keyframes bob {
+            0%,100% { transform: translateX(-50%) translateY(0); }
+            50%      { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ── STAT STRIP ── */
+        .stats {
+            background: var(--pine);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            padding: 22px 36px;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,.08);
+            flex: 1;
+            min-width: 130px;
+        }
+
+        .stat:last-child { border-right: none; }
+
+        .stat .v {
+            font-family: 'Fraunces', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--saffron);
+            display: block;
+            line-height: 1;
+        }
+
+        .stat .l {
+            font-size: .66rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.42);
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* ── ARTICLE ── */
+        .article {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 80px 28px 100px;
+        }
+
+        .intro {
+            font-size: clamp(1.08rem, 2vw, 1.28rem);
+            line-height: 1.9;
+            color: var(--pine);
+            border-left: 3px solid var(--pine-light);
+            padding-left: 26px;
+            margin-bottom: 52px;
+            font-family: 'Fraunces', serif;
+            font-weight: 300;
+        }
+
+        .intro::first-letter {
+            font-family: 'Fraunces', serif;
+            font-size: 5.4rem;
+            font-weight: 900;
+            color: var(--pine-mid);
+            float: left;
+            line-height: .76;
+            margin: 8px 14px 0 -26px;
+        }
+
+        p {
+            font-size: 1.04rem;
+            line-height: 1.88;
+            color: #1a2e1c;
+            margin-bottom: 26px;
+        }
+
+        /* ── SECTION HEAD ── */
+        .s-head {
+            font-family: 'Fraunces', serif;
+            font-size: 1.85rem;
+            font-weight: 600;
+            color: var(--pine);
+            margin: 64px 0 18px;
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .s-head::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 46px; height: 2px;
+            background: linear-gradient(to right, var(--pine-light), var(--saffron));
+        }
+
+        /* ── PULL QUOTE ── */
+        .pull {
+            background: var(--pine);
+            border-radius: 10px;
+            padding: 46px 52px;
+            margin: 56px -16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pull::before {
+            content: '"';
+            font-family: 'Fraunces', serif;
+            font-size: 12rem;
+            color: rgba(85,160,94,.1);
+            position: absolute;
+            top: -40px; left: 18px;
+            line-height: 1;
+        }
+
+        .pull p {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            font-weight: 300;
+            line-height: 1.65;
+            color: #e8f5ea;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pull cite {
+            display: block;
+            margin-top: 18px;
+            font-size: .7rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--saffron);
+            font-style: normal;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── SIDE-BY-SIDE ── */
+        .side-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 36px;
+            align-items: center;
+            margin: 52px 0;
+        }
+
+        .side-layout.reverse { direction: rtl; }
+        .side-layout.reverse > * { direction: ltr; }
+
+        .side-img {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 340px;
+        }
+
+        .side-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .55s ease;
+        }
+
+        .side-img:hover img { transform: scale(1.06); }
+
+        .side-img .cap {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 12px 16px;
+            background: linear-gradient(to top, rgba(10,25,12,.75), transparent);
+            color: rgba(255,255,255,.82);
+            font-size: .74rem;
+            font-style: italic;
+        }
+
+        .side-text h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            color: var(--pine);
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+
+        .side-text p { margin-bottom: 16px; }
+        .side-text p:last-child { margin-bottom: 0; }
+
+        /* ── PHOTO GRID (4 gambar) ── */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 260px 260px;
+            gap: 14px;
+            margin: 40px 0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .photo-grid .pg-item {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .photo-grid .pg-item:first-child {
+            grid-row: span 2;
+        }
+
+        .photo-grid .pg-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .6s ease;
+        }
+
+        .photo-grid .pg-item:hover img { transform: scale(1.07); }
+
+        .photo-grid .pg-item .cap {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 10px 14px;
+            background: linear-gradient(to top, rgba(10,25,12,.7), transparent);
+            color: rgba(255,255,255,.8);
+            font-size: .72rem;
+            font-style: italic;
+        }
+
+        /* ── PILLS ── */
+        .pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .pill {
+            background: var(--warm);
+            border: 1px solid rgba(46,107,53,.25);
+            color: var(--pine);
+            padding: 7px 18px;
+            border-radius: 50px;
+            font-size: .85rem;
+            font-weight: 500;
+            transition: background .2s, border-color .2s;
+        }
+
+        .pill:hover {
+            background: var(--pine-mid);
+            color: #fff;
+            border-color: var(--pine-mid);
+        }
+
+        /* ── ACTIVITY CARDS ── */
+        .lauks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin: 40px 0;
+        }
+
+        .lauk {
+            background: var(--warm);
+            border-radius: 10px;
+            padding: 24px 20px;
+            border: 1px solid rgba(46,107,53,.15);
+            transition: transform .2s, box-shadow .2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lauk::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--pine-mid), var(--saffron));
+        }
+
+        .lauk:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 36px rgba(26,61,31,.14);
+        }
+
+        .lauk h3 {
+            font-family: 'Fraunces', serif;
+            font-size: .98rem;
+            color: var(--pine);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .lauk p {
+            font-size: .82rem;
+            line-height: 1.5;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* ── ORNAMENT ── */
+        .orn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 60px 0;
+        }
+
+        .orn::before, .orn::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+        }
+
+        .orn::before { background: linear-gradient(to right, transparent, var(--pine-light)); }
+        .orn::after  { background: linear-gradient(to left,  transparent, var(--pine-light)); }
+
+        .orn span { color: var(--pine-light); font-size: .9rem; letter-spacing: .4em; }
+
+        /* ── INFO BOX ── */
+        .info-box {
+            background: var(--warm);
+            border: 1px solid rgba(46,107,53,.2);
+            border-radius: 10px;
+            padding: 36px 40px;
+            margin: 48px 0;
+        }
+
+        .info-box h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            color: var(--pine);
+            margin-bottom: 22px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(46,107,53,.2);
+            font-weight: 600;
+        }
+
+        .info-row {
+            display: flex;
+            gap: 16px;
+            padding: 11px 0;
+            border-bottom: 1px solid rgba(46,107,53,.08);
+            font-size: .93rem;
+        }
+
+        .info-row:last-child { border-bottom: none; }
+
+        .info-row .lbl {
+            min-width: 140px;
+            color: var(--muted);
+            font-size: .76rem;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding-top: 2px;
+        }
+
+        .info-row .val { color: var(--text); line-height: 1.55; }
+
+        /* ── MAP ── */
+        .map-wrap { margin: 56px 0 0; }
+
+        .map-wrap iframe {
+            width: 100%;
+            height: 380px;
+            border: 0;
+            border-radius: 10px;
+            display: block;
+            margin-top: 22px;
+            box-shadow: 0 8px 32px rgba(26,61,31,.14);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--pine);
+            text-align: center;
+            padding: 34px 16px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--pine-mid), var(--saffron), var(--gold), var(--saffron), var(--pine-mid));
+        }
+
+        footer p {
+            font-size: .78rem;
+            letter-spacing: .1em;
+            color: rgba(255,255,255,.38);
+            margin: 0;
+        }
+
+        footer strong { color: var(--saffron); }
+
+        @media (max-width: 620px) {
+            .side-layout { grid-template-columns: 1fr; }
+            .side-layout.reverse { direction: ltr; }
+            .side-img { height: 220px; }
+            .pull { padding: 30px 24px; margin: 40px 0; }
+            .pull p { font-size: 1.2rem; }
+            .info-box { padding: 24px 20px; }
+            .photo-grid { grid-template-rows: 180px 180px; }
+            .photo-grid .pg-item:first-child { grid-row: span 1; }
+            .photo-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+            .photo-grid .pg-item { height: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-tex"></div>
+
+    <div class="hero-content">
+        <div class="badge">Wisata Alam · Blitar, Jawa Timur</div>
+        <h1>
+            Outbound & Camping
+            <em>Petualangan Alam di Bumi Bung Karno</em>
+        </h1>
+        <p class="hero-sub">
+            Di antara rimbunnya hutan pinus Blitar, jiwa yang lelah menemukan rumahnya — dalam semilir angin, cahaya bintang, dan kehangatan api unggun bersama orang-orang tercinta.
+        </p>
+    </div>
+
+    <div class="scroll-hint">Jelajahi</div>
+</div>
+
+<!-- ── STATS ── */
+<div class="stats">
+    <div class="stat">
+        <span class="v">Alam</span>
+        <span class="l">Suasana Terbuka</span>
+    </div>
+    <div class="stat">
+        <span class="v">10+</span>
+        <span class="l">Jenis Aktivitas</span>
+    </div>
+    <div class="stat">
+        <span class="v">Sejuk</span>
+        <span class="l">Udara Pegunungan</span>
+    </div>
+    <div class="stat">
+        <span class="v">Semua</span>
+        <span class="l">Usia & Kelompok</span>
+    </div>
+</div>
+
+<!-- ── ARTIKEL ── -->
+<div class="article">
+
+    <p class="intro">
+        Jauh dari kebisingan kota, di balik barisan pohon pinus yang menjulang tinggi di kawasan Blitar, terbentang surga petualangan yang menunggu untuk dijelajahi. Outbound dan camping di Blitar bukan sekadar kegiatan rekreasi — ia adalah perjalanan kembali ke alam, momen di mana kerja sama tim diuji, persahabatan diperkuat, dan kenangan indah tercipta di bawah langit terbuka.
+    </p>
+
+    <p>
+        Kawasan hutan pinus Loji di Blitar menjadi salah satu destinasi favorit bagi keluarga, komunitas, sekolah, dan perusahaan yang ingin mengadakan kegiatan outbound maupun camping. Dengan udara yang sejuk, hamparan pinus yang rindang, dan fasilitas yang memadai, tempat ini menawarkan pengalaman alam yang autentik namun tetap aman dan nyaman bagi semua kalangan.
+    </p>
+
+    <!-- SIDE LAYOUT 1 -->
+    <div class="side-layout">
+        <div class="side-img">
+            <img src="https://i.pinimg.com/1200x/c0/22/cd/c022cda45e543476d386022f3b52d081.jpg" alt="Suasana camping di Blitar">
+            <div class="cap">Tenda-tenda berdiri kokoh di antara rimbunan pohon pinus Blitar</div>
+        </div>
+        <div class="side-text">
+            <h3>Alam Blitar yang Menjadi Panggilan Jiwa</h3>
+            <p>
+                Blitar menyimpan kawasan alam yang belum banyak diketahui orang — hutan pinus yang tenang, perbukitan yang sejuk, dan langit malam yang bersih dari polusi cahaya kota. Inilah yang menjadikan Blitar sebagai destinasi camping dan outbound yang makin diminati.
+            </p>
+            <p>
+                Memasang tenda di bawah naungan pinus, menghirup udara segar pegunungan, dan menikmati suara alam yang tenang adalah pengalaman yang sulit didapatkan di tempat lain. Di sinilah pikiran bisa benar-benar beristirahat dari rutinitas sehari-hari.
+            </p>
+        </div>
+    </div>
+
+    <div class="pull">
+        <p>"Di bawah ribuan bintang hutan pinus Blitar, semua beban terasa ringan — yang tersisa hanya kehangatan api unggun dan tawa orang-orang yang kita sayangi."</p>
+        <cite>— Catatan Wisata Alam Jawa Timur</cite>
+    </div>
+
+    <h2 class="s-head">Keseruan Outbound Bersama</h2>
+
+    <p>
+        Kegiatan outbound di Blitar dirancang untuk membangun kekompakan, kepercayaan diri, dan semangat tim. Dipandu oleh instruktur berpengalaman, setiap peserta diajak melewati berbagai tantangan yang menyenangkan sekaligus bermakna. Dari flying fox yang memacu adrenalin, hingga permainan kelompok yang melatih kerja sama — setiap aktivitas memiliki pesan tersendiri.
+    </p>
+
+    <!-- SIDE LAYOUT 2 -->
+    <div class="side-layout reverse">
+        <div class="side-img">
+            <img src="https://i.pinimg.com/1200x/4a/07/56/4a075616fea3cb9ddcf9f27c100bedde.jpg" alt="Aktivitas outbound Blitar">
+            <div class="cap">Aktivitas seru yang membangun kekompakan dan kerja sama tim</div>
+        </div>
+        <div class="side-text">
+            <h3>Tantangan yang Membangun Karakter</h3>
+            <p>
+                Setiap wahana outbound bukan sekadar permainan — ada nilai kerja sama, kepercayaan, dan keberanian yang tertanam dalam setiap tantangan. Peserta belajar untuk saling mendukung, berkomunikasi efektif, dan menyelesaikan masalah bersama.
+            </p>
+            <p>
+                Cocok untuk kegiatan LDKS sekolah, team building perusahaan, gathering komunitas, hingga liburan keluarga yang ingin lebih bermakna dari sekadar jalan-jalan biasa.
+            </p>
+        </div>
+    </div>
+
+    <h2 class="s-head">Galeri Suasana Alam</h2>
+    <p>Dari tenda yang berdiri di bawah pinus, api unggun yang menghangatkan malam, hingga panorama alam yang memukau — setiap sudut Blitar menyimpan cerita.</p>
+
+    <!-- PHOTO GRID -->
+    <div class="photo-grid">
+        <div class="pg-item">
+            <img src="https://www.cimbniaga.co.id/content/dam/cimb/inspirasi/hutan-pinus-loji.webp" alt="Hutan Pinus Loji Blitar">
+            <div class="cap">Hutan Pinus Loji — rimbunan pinus yang memukau</div>
+        </div>
+        <div class="pg-item">
+            <img src="https://www.nativeindonesia.com/foto/2023/04/berkemah-di-hutan-pinus-loji.jpg" alt="Berkemah di Hutan Pinus Loji">
+            <div class="cap">Berkemah di bawah naungan pinus yang menjulang tinggi</div>
+        </div>
+        <div class="pg-item">
+            <img src="https://i.pinimg.com/1200x/c0/22/cd/c022cda45e543476d386022f3b52d081.jpg" alt="Suasana camping malam hari">
+            <div class="cap">Malam yang hangat bersama api unggun dan bintang</div>
+        </div>
+    </div>
+
+    <h2 class="s-head">Aktivitas yang Tersedia</h2>
+    <p>Beragam aktivitas seru menanti di kawasan outbound dan camping Blitar, cocok untuk semua usia dan berbagai jenis kelompok:</p>
+
+    <div class="pills">
+        <span class="pill">Flying Fox</span>
+        <span class="pill">Fun Games</span>
+        <span class="pill">Mendirikan Tenda</span>
+        <span class="pill">Api Unggun</span>
+        <span class="pill">Barbeque</span>
+        <span class="pill">Stargazing</span>
+        <span class="pill">Hiking</span>
+        <span class="pill">Permainan Tim</span>
+        <span class="pill">Jelajah Alam</span>
+        <span class="pill">Paintball</span>
+    </div>
+
+    <h2 class="s-head">Cocok untuk Semua Kalangan</h2>
+    <p>Wisata outbound dan camping di Blitar dapat dinikmati oleh berbagai kelompok dengan program yang bisa disesuaikan:</p>
+
+    <div class="lauks">
+        <div class="lauk">
+            <h3>Keluarga</h3>
+            <p>Liburan bermakna bersama keluarga — anak-anak belajar alam, orang tua melepas penat dari rutinitas kota.</p>
+        </div>
+        <div class="lauk">
+            <h3>Pelajar & Mahasiswa</h3>
+            <p>LDKS, pramuka, atau study tour — pengalaman alam yang membentuk karakter dan jiwa kepemimpinan.</p>
+        </div>
+        <div class="lauk">
+            <h3>Perusahaan</h3>
+            <p>Team building dan gathering yang efektif — mempererat hubungan antar karyawan di luar kantor.</p>
+        </div>
+        <div class="lauk">
+            <h3>Komunitas</h3>
+            <p>Gathering komunitas hobi, arisan, atau paguyuban yang ingin merasakan petualangan bersama.</p>
+        </div>
+        <div class="lauk">
+            <h3>Pasangan Muda</h3>
+            <p>Camping romantis di bawah bintang — kenangan bersama yang sulit terlupakan sepanjang masa.</p>
+        </div>
+        <div class="lauk">
+            <h3>Solo Traveler</h3>
+            <p>Bagi jiwa petualang yang ingin menemukan ketenangan dan bertemu teman baru di alam terbuka.</p>
+        </div>
+    </div>
+
+    <div class="orn"><span>✦ ✦ ✦</span></div>
+
+    <!-- INFO BOX -->
+    <div class="info-box">
+        <h3>Informasi Wisata</h3>
+        <div class="info-row">
+            <span class="lbl">Lokasi Utama</span>
+            <span class="val">Hutan Pinus Loji, Kabupaten Blitar, Jawa Timur</span>
+        </div>
+        <div class="info-row">
+            <span class="lbl">Jam Operasional</span>
+            <span class="val">Buka setiap hari 07.00 – 17.00 WIB · Camping semalam penuh dengan reservasi</span>
+        </div>
+        <div class="info-row">
+            <span class="lbl">Harga Tiket</span>
+            <span class="val">Masuk mulai Rp 10.000 · Paket outbound & camping mulai Rp 100.000/orang</span>
+        </div>
+        <div class="info-row">
+            <span class="lbl">Tips</span>
+            <span class="val">Bawa jaket tebal untuk malam hari, reservasi lebih awal untuk akhir pekan dan musim liburan</span>
+        </div>
+        <div class="info-row">
+            <span class="lbl">Fasilitas</span>
+            <span class="val">Area camping, toilet, mushola, warung makan, penyewaan tenda, dan pemandu outbound</span>
+        </div>
+    </div>
+
+    <!-- MAP -->
+    <div class="map-wrap">
+        <h2 class="s-head">Temukan di Peta</h2>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.255!2d112.3476941!3d-7.9624038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e788f5bfbbff6e5%3A0x81eb31cb234de868!2sHutan%20Pinus%20Loji%20Blitar!5e0!3m2!1sid!2sid!4v1710000000000"
+            allowfullscreen=""
+            loading="lazy"
+            title="Lokasi Hutan Pinus Loji Blitar">
+        </iframe>
+    </div>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <p>Artikel Wisata &nbsp;·&nbsp; <strong>Outbound & Camping Blitar</strong> &nbsp;·&nbsp; Jawa Timur, Indonesia</p>
+</footer>
+
+</body>
+</html>

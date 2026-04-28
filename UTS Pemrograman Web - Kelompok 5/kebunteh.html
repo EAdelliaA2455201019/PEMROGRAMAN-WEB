@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perkebunan Teh Sirah Kencong — Blitar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-deep:   #1c3a2a;
+            --green-mid:    #2e5e40;
+            --green-light:  #4a8c5c;
+            --green-mist:   #d4e8d8;
+            --cream:        #f7f3ec;
+            --ivory:        #fdfaf5;
+            --gold:         #b89a4e;
+            --text:         #1e2820;
+            --muted:        #6a7a6e;
+            --fog:          rgba(28,58,42,.06);
+        }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--ivory);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 620px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://i.pinimg.com/736x/4e/af/d8/4eafd879219a52e010e34dbd7273103e.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            filter: brightness(.6) saturate(1.15);
+            transform: scale(1.06);
+            animation: heroZoom 18s ease-out forwards;
+        }
+
+        @keyframes heroZoom { to { transform: scale(1); } }
+
+        .hero-gradient {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                160deg,
+                rgba(10,28,18,.15) 0%,
+                transparent 45%,
+                rgba(10,28,18,.72) 85%,
+                rgba(10,28,18,.92) 100%
+            );
+        }
+
+        /* leaf pattern overlay */
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: .06;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cellipse cx='30' cy='30' rx='8' ry='18' fill='%23fff' transform='rotate(30 30 30)'/%3E%3C/svg%3E");
+            background-size: 60px 60px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 8vw 70px;
+            color: #fff;
+            animation: fadeUp .9s .2s both;
+            max-width: 820px;
+        }
+
+        @keyframes fadeUp {
+            from { opacity:0; transform:translateY(32px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(184,154,78,.7);
+            color: var(--gold);
+            font-size: .72rem;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            padding: 5px 16px;
+            border-radius: 2px;
+            margin-bottom: 22px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+        }
+
+        .hero-content h1 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 700;
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1.0;
+            letter-spacing: -.01em;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 24px rgba(0,0,0,.3);
+        }
+
+        .hero-content h1 em {
+            font-style: italic;
+            font-weight: 300;
+            color: rgba(255,255,255,.75);
+            display: block;
+            font-size: .65em;
+            letter-spacing: .04em;
+        }
+
+        .hero-sub {
+            font-size: 1rem;
+            font-weight: 300;
+            opacity: .8;
+            max-width: 480px;
+            line-height: 1.65;
+            margin-top: 18px;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,.5);
+            font-size: .68rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+
+        .scroll-hint::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(255,255,255,.5), transparent);
+            animation: scrollLine 1.8s ease-in-out infinite;
+        }
+
+        @keyframes scrollLine {
+            0%,100% { opacity:.5; transform: scaleY(1); }
+            50% { opacity:1; transform: scaleY(.6); }
+        }
+
+        /* ─── STATS STRIP ─── */
+        .stats {
+            background: var(--green-deep);
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            padding: 24px 40px;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,.1);
+            flex: 1;
+            min-width: 140px;
+        }
+
+        .stat:last-child { border-right: none; }
+
+        .stat .num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--gold);
+            line-height: 1;
+            display: block;
+        }
+
+        .stat .lbl {
+            font-size: .72rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.55);
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* ─── MAIN ARTICLE ─── */
+        .article {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 80px 28px 100px;
+        }
+
+        .intro-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+            font-weight: 300;
+            line-height: 1.75;
+            color: var(--green-deep);
+            border-left: 3px solid var(--green-light);
+            padding-left: 28px;
+            margin-bottom: 52px;
+            animation: fadeUp .7s .1s both;
+        }
+
+        .intro-text::first-letter {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.8rem;
+            font-weight: 700;
+            color: var(--green-mid);
+            float: left;
+            line-height: .78;
+            margin: 6px 12px 0 0;
+        }
+
+        p {
+            font-size: 1.03rem;
+            line-height: 1.85;
+            color: #374a3d;
+            margin-bottom: 26px;
+        }
+
+        /* ─── SECTION HEADING ─── */
+        .s-head {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--green-deep);
+            margin: 64px 0 20px;
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .s-head::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 40px; height: 2px;
+            background: var(--gold);
+        }
+
+        /* ─── FULL-WIDTH IMAGE ─── */
+        .img-full {
+            width: calc(100% + 56px);
+            margin-left: -28px;
+            height: 420px;
+            object-fit: cover;
+            display: block;
+            border-radius: 4px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        /* ─── TWO-COL IMAGE ─── */
+        .img-duo {
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            gap: 14px;
+            margin: 48px 0;
+        }
+
+        .img-duo img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 6px;
+            display: block;
+        }
+
+        .img-duo figcaption {
+            font-size: .75rem;
+            color: var(--muted);
+            letter-spacing: .06em;
+            text-align: center;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        /* ─── PULL QUOTE ─── */
+        .pull {
+            margin: 56px -12px;
+            padding: 36px 40px;
+            background: var(--green-deep);
+            border-radius: 8px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pull::before {
+            content: '"';
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 10rem;
+            color: rgba(255,255,255,.06);
+            position: absolute;
+            top: -30px;
+            left: 20px;
+            line-height: 1;
+        }
+
+        .pull p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.55rem;
+            font-style: italic;
+            line-height: 1.55;
+            color: #fff;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pull cite {
+            display: block;
+            margin-top: 14px;
+            font-size: .75rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-style: normal;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ─── HIGHLIGHT CARDS ─── */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+            gap: 16px;
+            margin: 48px 0;
+        }
+
+        .card {
+            background: var(--cream);
+            border: 1px solid var(--green-mist);
+            border-radius: 10px;
+            padding: 26px 20px;
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(28,58,42,.12);
+        }
+
+        .card .ico { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+
+        .card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--green-deep);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .card p {
+            font-size: .85rem;
+            line-height: 1.55;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* ─── MAP SECTION ─── */
+        .map-section {
+            margin: 64px 0 0;
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 360px;
+            border: 0;
+            border-radius: 10px;
+            display: block;
+            margin-top: 20px;
+            box-shadow: 0 8px 32px rgba(28,58,42,.12);
+        }
+
+        /* ─── INFO TABLE ─── */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 28px 0;
+            font-size: .92rem;
+        }
+
+        .info-table tr { border-bottom: 1px solid var(--green-mist); }
+        .info-table tr:last-child { border-bottom: none; }
+
+        .info-table td {
+            padding: 13px 6px;
+            vertical-align: top;
+            line-height: 1.55;
+        }
+
+        .info-table td:first-child {
+            color: var(--muted);
+            font-weight: 500;
+            font-size: .8rem;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            width: 140px;
+            padding-top: 15px;
+        }
+
+        .info-table td:last-child { color: var(--text); }
+
+        /* ─── DIVIDER ─── */
+        .div {
+            text-align: center;
+            color: var(--green-light);
+            font-size: 1rem;
+            letter-spacing: .6em;
+            margin: 52px 0;
+            opacity: .4;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--green-deep);
+            color: rgba(255,255,255,.45);
+            text-align: center;
+            padding: 32px 16px;
+            font-size: .78rem;
+            letter-spacing: .08em;
+        }
+
+        footer strong { color: var(--gold); }
+
+        @media (max-width: 580px) {
+            .img-duo { grid-template-columns: 1fr; }
+            .img-full { height: 240px; }
+            .pull { padding: 26px 24px; margin: 40px 0; }
+            .pull p { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-pattern"></div>
+
+    <div class="hero-content">
+        <div class="badge">✦ Wisata Alam · Blitar, Jawa Timur</div>
+        <h1>
+            Sirah Kencong
+            <em>Perkebunan Teh di Atap Blitar</em>
+        </h1>
+        <p class="hero-sub">
+            Ribuan hektar hamparan teh yang membentang di lereng Gunung Kelud — tempat di mana udara pegunungan, kabut pagi, dan aroma daun teh menyatu dalam satu panorama yang tak terlupakan.
+        </p>
+    </div>
+
+    <div class="scroll-hint">Gulir</div>
+</div>
+
+<!-- ── STATS ── -->
+<div class="stats">
+    <div class="stat">
+        <span class="num">1.200</span>
+        <span class="lbl">Mdpl Ketinggian</span>
+    </div>
+    <div class="stat">
+        <span class="num">1.500+</span>
+        <span class="lbl">Hektar Kebun Teh</span>
+    </div>
+    <div class="stat">
+        <span class="num">1910</span>
+        <span class="lbl">Tahun Berdiri</span>
+    </div>
+    <div class="stat">
+        <span class="num">±3 Jam</span>
+        <span class="lbl">Dari Surabaya</span>
+    </div>
+</div>
+
+<!-- ── ARTIKEL ── -->
+<div class="article">
+
+    <p class="intro-text">
+        Jauh di balik perbukitan hijau Kabupaten Blitar, tersembunyi sebuah permata alam yang keindahannya sering kali luput dari perhatian — Perkebunan Teh Sirah Kencong. Di sinilah hamparan tanaman teh berusia lebih dari seabad tumbuh subur, membentang bagai permadani zamrud yang dipeluk kabut pegunungan setiap pagi.
+    </p>
+
+    <p>
+        Sirah Kencong bukan sekadar perkebunan biasa. Ia adalah warisan kolonial Belanda yang kini bertransformasi menjadi destinasi wisata alam sekaligus pusat produksi teh berkualitas. Berada di ketinggian sekitar 1.200 meter di atas permukaan laut, kawasan ini menawarkan suhu udara yang sejuk dan segar, menjadikannya oase pelarian yang sempurna dari panasnya dataran rendah Jawa Timur.
+    </p>
+
+    <div class="pull">
+        <p>"Berdiri di antara barisan pohon teh Sirah Kencong terasa seperti melangkah masuk ke dalam lukisan — hijau tak terbatas, udara dingin yang membelai, dan keheningan yang menyembuhkan."</p>
+        <cite>— Catatan Perjalanan Wisatawan</cite>
+    </div>
+
+    <h2 class="s-head">Sejarah yang Mengakar Dalam</h2>
+
+    <p>
+        Perkebunan ini dirintis pada masa pemerintahan kolonial Belanda sekitar awal abad ke-20, menjadikannya salah satu perkebunan teh tertua di Jawa Timur. Nama "Sirah Kencong" sendiri berasal dari bahasa Jawa yang berarti "kepala" atau "sumber" — mencerminkan posisinya sebagai hulu dari aliran sungai dan kekayaan alam di kawasan tersebut.
+    </p>
+
+    <p>
+        Selama lebih dari seratus tahun, perkebunan ini telah melalui berbagai era: masa kejayaan kolonial, perjuangan kemerdekaan, hingga era modern di mana teh Sirah Kencong mulai dikenal sebagai produk unggulan Kabupaten Blitar. Jejak sejarah ini masih terasa kuat — dari bangunan-bangunan tua bergaya Eropa yang tersisa hingga cara pengolahan teh yang mempertahankan teknik tradisional.
+    </p>
+
+    <!-- FOTO DUO -->
+    <div class="img-duo">
+        <figure>
+            <img
+                src="https://tse2.mm.bing.net/th/id/OIP.Fi-Px1i9wCz65ikyqPB27gHaFj?pid=Api&h=220&P=0"
+                alt="Hamparan kebun teh Sirah Kencong"
+            >
+            <figcaption>Hamparan kebun teh yang membentang luas</figcaption>
+        </figure>
+        <figure>
+            <img
+                src="https://i.pinimg.com/736x/fc/d5/62/fcd5624e5bad07919a5e10c93815be16.jpg"
+                alt="Suasana perkebunan Sirah Kencong"
+            >
+            <figcaption>Suasana sejuk di tengah perkebunan</figcaption>
+        </figure>
+    </div>
+
+    <h2 class="s-head">Pesona yang Memukau</h2>
+
+    <p>
+        Bagi siapa pun yang pertama kali menginjakkan kaki di Sirah Kencong, pemandangan yang tersaji akan langsung mencuri napas. Ribuan baris tanaman teh yang tertata rapi membentuk pola geometris alami yang menakjubkan, terutama saat dilihat dari titik-titik tertinggi di kawasan perkebunan.
+    </p>
+
+    <p>
+        Saat pagi hari, kabut tipis menyelimuti lembah-lembah di antara bukit teh, menciptakan pemandangan yang magis dan surealistis. Sinar matahari pertama yang menembus kabut memantulkan kilau keemasan di atas helai-helai daun teh yang masih basah oleh embun — sebuah pertunjukan alam gratis yang tak ternilai harganya.
+    </p>
+
+    <!-- GAMBAR FULL WIDTH -->
+    <img
+        class="img-full"
+        src="https://i.pinimg.com/736x/74/b1/16/74b1165175ef7a456843d65bea83969d.jpg"
+        alt="Panorama kebun teh Sirah Kencong dari ketinggian"
+    >
+
+    <h2 class="s-head">Aktivitas yang Bisa Dinikmati</h2>
+
+    <p>
+        Sirah Kencong bukan hanya soal memandang keindahan — ada banyak aktivitas yang bisa dilakukan pengunjung untuk memperdalam pengalaman wisata mereka di sini.
+    </p>
+
+    <!-- CARDS -->
+    <div class="cards">
+        <div class="card">
+            <span class="ico">🍃</span>
+            <h3>Petik Teh Langsung</h3>
+            <p>Rasakan pengalaman memetik daun teh segar langsung dari pucuknya bersama para pemetik lokal.</p>
+        </div>
+        <div class="card">
+            <span class="ico">📸</span>
+            <h3>Fotografi Alam</h3>
+            <p>Setiap sudut perkebunan adalah kanvas sempurna — dari kabut pagi hingga gradasi hijau tak terbatas.</p>
+        </div>
+        <div class="card">
+            <span class="ico">🥾</span>
+            <h3>Trekking & Hiking</h3>
+            <p>Jelajahi jalur-jalur alam di antara perkebunan dengan pemandangan Gunung Kelud di kejauhan.</p>
+        </div>
+        <div class="card">
+            <span class="ico">☕</span>
+            <h3>Cicip Teh Lokal</h3>
+            <p>Nikmati teh segar hasil panen kebun sendiri — aroma dan rasa yang tak akan ditemukan di tempat lain.</p>
+        </div>
+        <div class="card">
+            <span class="ico">🏕️</span>
+            <h3>Camping</h3>
+            <p>Bermalam di tengah perkebunan, ditemani gemintang dan udara pegunungan yang dingin menyegarkan.</p>
+        </div>
+        <div class="card">
+            <span class="ico">🌄</span>
+            <h3>Sunrise Hunting</h3>
+            <p>Saksikan matahari terbit di atas lautan awan dari puncak-puncak tertinggi kawasan Sirah Kencong.</p>
+        </div>
+    </div>
+
+    <div class="div">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <h2 class="s-head">Informasi Kunjungan</h2>
+
+    <table class="info-table">
+        <tr>
+            <td>Lokasi</td>
+            <td>Desa Ngadirenggo, Kec. Wlingi, Kab. Blitar, Jawa Timur</td>
+        </tr>
+        <tr>
+            <td>Ketinggian</td>
+            <td>± 1.200 mdpl</td>
+        </tr>
+        <tr>
+            <td>Jam Buka</td>
+            <td>Senin – Minggu, 07.00 – 17.00 WIB</td>
+        </tr>
+        <tr>
+            <td>Akses</td>
+            <td>Kendaraan pribadi disarankan; jalan berkelok melewati hutan pinus</td>
+        </tr>
+        <tr>
+            <td>Fasilitas</td>
+            <td>Area parkir, warung makan, toilet, jalur trekking, area kemah</td>
+        </tr>
+        <tr>
+            <td>Tips</td>
+            <td>Bawa jaket tebal — suhu pagi bisa turun drastis hingga 12–15°C</td>
+        </tr>
+    </table>
+
+    <!-- MAP -->
+    <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.6!2d112.4301459!3d-7.9761368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78857e479b4345%3A0x3fe1c1d528299c4e!2sPerkebunan%20Teh%20Sirah%20Kencong!5e0!3m2!1sid!2sid"
+    width="100%"
+    height="400"
+    style="border:0; border-radius:10px;"
+    allowfullscreen=""
+    loading="lazy">
+</iframe>
+        <p style="margin-top:12px; font-size:.82rem; color:var(--muted); text-align:center;">
+            📍 Desa Ngadirenggo, Kec. Wlingi, Kab. Blitar — 
+            <a href="https://www.google.com/maps/search/Perkebunan+Teh+Sirah+Kencong+Blitar"
+               target="_blank"
+               style="color:var(--green-mid); text-decoration:underline; font-weight:500;">
+               Buka di Google Maps ↗
+            </a>
+        </p>
+    </div>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <p>Artikel Wisata &nbsp;·&nbsp; <strong>Perkebunan Teh Sirah Kencong</strong> &nbsp;·&nbsp; Blitar, Jawa Timur, Indonesia</p>
+</footer>
+
+</body>
+</html>

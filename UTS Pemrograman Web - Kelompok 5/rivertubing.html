@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outbound & Camping Blitar</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #1a1208;
+    color: #f0e8d5;
+    font-family: 'Lato', sans-serif;
+    min-height: 100vh;
+  }
+
+  .journal-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+  }
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.7) saturate(1.2);
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 30%, #1a1208 100%);
+  }
+  .hero-badge {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    background: #c4792a;
+    color: #fff9f0;
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+  }
+  .hero-title {
+    position: absolute;
+    bottom: 32px;
+    left: 32px;
+    right: 32px;
+  }
+  .hero-title h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 700;
+    color: #fdf6e8;
+    line-height: 1.1;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  }
+  .hero-title .subtitle {
+    font-size: 13px;
+    font-weight: 300;
+    color: #c4b896;
+    margin-top: 8px;
+    letter-spacing: 1px;
+  }
+
+  /* META INFO */
+  .meta-strip {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid #3a2e1a;
+    border-bottom: 1px solid #3a2e1a;
+    background: #211809;
+  }
+  .meta-item {
+    flex: 1;
+    padding: 14px 20px;
+    border-right: 1px solid #3a2e1a;
+    text-align: center;
+  }
+  .meta-item:last-child { border-right: none; }
+  .meta-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a7355;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .meta-value {
+    font-size: 14px;
+    font-weight: 400;
+    color: #e8d9b8;
+  }
+
+  /* CONTENT */
+  .content {
+    padding: 40px 32px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c4792a;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #3a2e1a;
+  }
+
+  .lead-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.7;
+    color: #d9c9a3;
+    margin-bottom: 24px;
+    padding-left: 20px;
+    border-left: 3px solid #c4792a;
+  }
+
+  .body-text {
+    font-size: 15px;
+    line-height: 1.85;
+    color: #b8a882;
+    margin-bottom: 18px;
+    font-weight: 300;
+  }
+
+  /* PHOTO GRID */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 200px 200px;
+    gap: 8px;
+    margin: 36px 0;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .photo-grid .main-photo {
+    grid-row: 1 / 3;
+    position: relative;
+    overflow: hidden;
+  }
+  .photo-grid .main-photo img,
+  .photo-grid .side-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.1);
+  }
+  .photo-grid .side-photo {
+    position: relative;
+    overflow: hidden;
+  }
+  .photo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: #e8d9b8;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    padding: 20px 12px 10px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: #211809;
+    border: 1px solid #3a2e1a;
+    border-left: 4px solid #c4792a;
+    padding: 20px 24px;
+    margin: 28px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .highlight-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: #e8c87a;
+    margin-bottom: 12px;
+  }
+  .activity-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .activity-list li {
+    font-size: 13px;
+    color: #a89870;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .activity-list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #c4792a;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* MAP SECTION */
+  .map-section {
+    margin-top: 36px;
+  }
+  .map-container {
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 16px;
+    border: 1px solid #3a2e1a;
+  }
+  .map-container iframe {
+    display: block;
+    width: 100%;
+    height: 280px;
+    border: 0;
+    filter: grayscale(30%) sepia(20%);
+  }
+
+  /* DIVIDER */
+  .ornament-divider {
+    text-align: center;
+    margin: 36px 0;
+    color: #4a3a22;
+    font-size: 20px;
+    letter-spacing: 12px;
+  }
+
+  /* FOOTER */
+  .journal-footer {
+    background: #100d05;
+    border-top: 1px solid #2e2411;
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .journal-footer .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #7a6a4a;
+    font-style: italic;
+  }
+  .journal-footer .page-num {
+    font-size: 12px;
+    color: #4a3a22;
+    letter-spacing: 2px;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+<div class="journal-wrapper">
+
+  <!-- HERO -->
+  <div class="hero">
+    <!-- Ganti src dengan path foto utama kamu -->
+    <img class="hero-img" src="assets/images/river-tubing.jpg" alt="River tubing bersama anak-anak di Blitar">
+    <div class="hero-overlay"></div>
+   
+    <div class="hero-title">
+      <h1>Outbound &amp; Camping<br>Blitar</h1>
+      <div class="subtitle">Petualangan Alam yang Tak Terlupakan · Kabupaten Blitar, Jawa Timur</div>
+    </div>
+  </div>
+
+  <!-- META -->
+  <div class="meta-strip">
+    <div class="meta-item">
+      <span class="meta-label">Lokasi</span>
+      <span class="meta-value">Blitar, Jawa Timur</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Jenis Wisata</span>
+      <span class="meta-value">Alam &amp; Adventure</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Cocok Untuk</span>
+      <span class="meta-value">Keluarga &amp; Pelajar</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Suasana</span>
+      <span class="meta-value">Sejuk &amp; Asri</span>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <div class="section-label">Tentang Wisata</div>
+
+    <p class="lead-text">
+      "Di sinilah alam berbicara, dan kita belajar mendengarkan — melalui derasnya air, rindangnya pohon, dan gelak tawa bersama."
+    </p>
+
+    <p class="body-text">
+      Outbound &amp; Camping di Blitar adalah pengalaman wisata alam yang dirancang untuk mendekatkan kita kembali dengan keindahan alam terbuka. Tersembunyi di antara perbukitan hijau Kabupaten Blitar, destinasi ini menawarkan suasana yang menyegarkan jiwa dan raga — jauh dari keramaian kota, dekat dengan alam yang sesungguhnya.
+    </p>
+
+    <p class="body-text">
+      Kegiatan river tubing menjadi salah satu daya tarik utama, di mana peserta mengapung di atas ban besar menyusuri aliran sungai yang tenang. Anak-anak dan peserta dewasa sama-sama dapat merasakan sensasi keseruan yang penuh tawa dan kebersamaan, diawasi langsung oleh pemandu berpengalaman yang memastikan keamanan setiap peserta.
+    </p>
+
+    <!-- PHOTO GRID -->
+    <div class="photo-grid">
+      <div class="main-photo">
+        <!-- Ganti src dengan foto camping kamu -->
+        <img src="https://i.pinimg.com/736x/23/99/52/239952cc3cc155744271600714d75211.jpg" alt="Suasana camping di alam terbuka">
+        <div class="photo-caption">Malam bersama api unggun di alam terbuka</div>
+      </div>
+      <div class="side-photo">
+        <!-- Ganti src dengan foto outbound kamu -->
+        <img src="https://i.pinimg.com/736x/55/ab/11/55ab1132f87daf994b93499be38900a7.jpg" alt="Aktivitas outbound">
+        <div class="photo-caption">Aktivitas outbound seru</div>
+      </div>
+      <div class="side-photo" style="background:#2a1e0e; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px;">
+        <div style="font-size:36px; color:#c4792a;">☽</div>
+        <div style="font-size:12px; color:#8a7355; letter-spacing:1.5px; text-align:center; text-transform:uppercase;">Langit Malam<br>yang Indah</div>
+      </div>
+    </div>
+
+    <div class="ornament-divider">✦ ✦ ✦</div>
+
+    <!-- AKTIVITAS -->
+    <div class="section-label">Aktivitas Unggulan</div>
+    <div class="highlight-box">
+      <h3>Apa yang Bisa Kamu Lakukan?</h3>
+      <ul class="activity-list">
+        <li>River Tubing Seru</li>
+        <li>Flying Fox Menantang</li>
+        <li>Permainan Tim (Fun Games)</li>
+        <li>Mendirikan Tenda Bersama</li>
+        <li>Api Unggun &amp; Barbeque</li>
+        <li>Menikmati Langit Berbintang</li>
+        <li>Eksplorasi Hutan Pinus</li>
+        <li>Outbound Edukasi</li>
+      </ul>
+    </div>
+
+    <p class="body-text">
+      Pada malam hari, pengalaman camping semakin berkesan dengan hangat api unggun yang menyala, aroma barbeque mengepul, dan langit malam Blitar yang bebas polusi cahaya — menghadirkan pemandangan bintang yang jarang bisa dinikmati di perkotaan. Momen inilah yang paling sering dikenang oleh para peserta.
+    </p>
+
+    <!-- MAP -->
+    <div class="map-section">
+      <div class="section-label">Lokasi &amp; Peta</div>
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.255!2d112.3476941!3d-7.9624038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e788f5bfbbff6e5%3A0x81eb31cb234de868!2sHutan%20Pinus%20Loji%20Blitar!5e0!3m2!1sid!2sid!4v1710000000000"
+          allowfullscreen=""
+          loading="lazy"
+          title="Lokasi Hutan Pinus Loji Blitar">
+        </iframe>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="journal-footer">
+    <div class="brand">Outbound &amp; Camping Blitar</div>
+    <div class="page-num">VOL. 01 · 2025</div>
+  </div>
+
+</div>
+</body>
+</html>

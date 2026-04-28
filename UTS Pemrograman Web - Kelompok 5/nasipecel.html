@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nasi Pecel Khas Blitar — Sarapan Jiwa dari Tanah Blitar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,900;1,300;1,600&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --leaf:       #2d5016;
+            --leaf-mid:   #4a7c28;
+            --leaf-light: #7ab648;
+            --peanut:     #8b5e1a;
+            --gold:       #d4920a;
+            --saffron:    #f0b22a;
+            --cream:      #fdfaf2;
+            --warm:       #f7f0e0;
+            --text:       #1a1206;
+            --muted:      #6b5c3a;
+        }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--cream);
+            color: var(--text);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 400;
+            overflow-x: hidden;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://i.pinimg.com/736x/ed/10/e9/ed10e982a2c2627bf08bceaa8aef4605.jpg');
+            background-size: cover;
+            background-position: center 35%;
+            filter: brightness(.52) saturate(1.25);
+            transform: scale(1.06);
+            animation: zhero 20s ease-out forwards;
+        }
+
+        @keyframes zhero { to { transform: scale(1); } }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(8,18,4,.25) 0%,
+                transparent 28%,
+                rgba(20,36,8,.65) 68%,
+                rgba(15,26,5,.95) 100%
+            );
+        }
+
+        /* subtle leaf-vein texture */
+        .hero-tex {
+            position: absolute;
+            inset: 0;
+            opacity: .04;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath d='M40 10 Q55 40 40 70 Q25 40 40 10Z' fill='%23fff'/%3E%3C/svg%3E");
+            background-size: 80px 80px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 8vw 70px;
+            color: #fff;
+            max-width: 740px;
+            animation: fadeUp 1s .1s both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity:0; transform:translateY(38px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: .7rem;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+            color: var(--saffron);
+            border-top: 1px solid rgba(240,178,42,.4);
+            border-bottom: 1px solid rgba(240,178,42,.4);
+            padding: 6px 20px;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .hero-content h1 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(3rem, 8.5vw, 6.2rem);
+            font-weight: 900;
+            line-height: .97;
+            letter-spacing: -.02em;
+            text-shadow: 0 4px 30px rgba(0,0,0,.4);
+        }
+
+        .hero-content h1 em {
+            display: block;
+            font-size: .38em;
+            font-weight: 300;
+            font-style: italic;
+            color: rgba(212,146,10,.85);
+            letter-spacing: .06em;
+            margin-top: 12px;
+        }
+
+        .hero-sub {
+            margin-top: 20px;
+            font-size: 1rem;
+            opacity: .72;
+            max-width: 460px;
+            line-height: 1.72;
+            font-weight: 300;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 28px; left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: rgba(212,146,10,.55);
+            font-size: .62rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            text-align: center;
+            animation: bob 2.2s ease-in-out infinite;
+        }
+
+        .scroll-hint::after {
+            content: '';
+            display: block;
+            width: 1px; height: 38px;
+            background: linear-gradient(to bottom, rgba(212,146,10,.5), transparent);
+            margin: 6px auto 0;
+        }
+
+        @keyframes bob {
+            0%,100% { transform: translateX(-50%) translateY(0); }
+            50%      { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ── STAT STRIP ── */
+        .stats {
+            background: var(--leaf);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            padding: 22px 36px;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,.08);
+            flex: 1;
+            min-width: 130px;
+        }
+
+        .stat:last-child { border-right: none; }
+
+        .stat .v {
+            font-family: 'Fraunces', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--saffron);
+            display: block;
+            line-height: 1;
+        }
+
+        .stat .l {
+            font-size: .66rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.42);
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* ── ARTICLE ── */
+        .article {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 80px 28px 100px;
+        }
+
+        /* dropcap intro */
+        .intro {
+            font-size: clamp(1.08rem, 2vw, 1.28rem);
+            line-height: 1.9;
+            color: var(--leaf);
+            border-left: 3px solid var(--leaf-light);
+            padding-left: 26px;
+            margin-bottom: 52px;
+            font-family: 'Fraunces', serif;
+            font-weight: 300;
+        }
+
+        .intro::first-letter {
+            font-family: 'Fraunces', serif;
+            font-size: 5.4rem;
+            font-weight: 900;
+            color: var(--leaf-mid);
+            float: left;
+            line-height: .76;
+            margin: 8px 14px 0 -26px;
+        }
+
+        p {
+            font-size: 1.04rem;
+            line-height: 1.88;
+            color: #2a200a;
+            margin-bottom: 26px;
+        }
+
+        /* ── SECTION HEAD ── */
+        .s-head {
+            font-family: 'Fraunces', serif;
+            font-size: 1.85rem;
+            font-weight: 600;
+            color: var(--leaf);
+            margin: 64px 0 18px;
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .s-head::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 46px; height: 2px;
+            background: linear-gradient(to right, var(--leaf-light), var(--saffron));
+        }
+
+        /* ── PULL QUOTE ── */
+        .pull {
+            background: var(--leaf);
+            border-radius: 10px;
+            padding: 46px 52px;
+            margin: 56px -16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pull::before {
+            content: '"';
+            font-family: 'Fraunces', serif;
+            font-size: 12rem;
+            color: rgba(122,182,72,.1);
+            position: absolute;
+            top: -40px; left: 18px;
+            line-height: 1;
+        }
+
+        .pull p {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            font-weight: 300;
+            line-height: 1.65;
+            color: #f0ead8;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pull cite {
+            display: block;
+            margin-top: 18px;
+            font-size: .7rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--saffron);
+            font-style: normal;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── SIDE-BY-SIDE LAYOUT ── */
+        .side-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 36px;
+            align-items: center;
+            margin: 52px 0;
+        }
+
+        .side-layout.reverse { direction: rtl; }
+        .side-layout.reverse > * { direction: ltr; }
+
+        .side-img {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 340px;
+        }
+
+        .side-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .55s ease;
+        }
+
+        .side-img:hover img { transform: scale(1.06); }
+
+        .side-img .cap {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 12px 16px;
+            background: linear-gradient(to top, rgba(15,26,5,.72), transparent);
+            color: rgba(255,255,255,.82);
+            font-size: .74rem;
+            font-style: italic;
+        }
+
+        .side-text h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            color: var(--leaf);
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+
+        .side-text p { margin-bottom: 16px; }
+        .side-text p:last-child { margin-bottom: 0; }
+
+        /* ── INGREDIENT PILLS ── */
+        .ingredient-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            color: var(--peanut);
+            margin: 44px 0 18px;
+            font-weight: 600;
+        }
+
+        .pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .pill {
+            background: var(--warm);
+            border: 1px solid rgba(74,124,40,.25);
+            color: var(--leaf);
+            padding: 7px 18px;
+            border-radius: 50px;
+            font-size: .85rem;
+            font-weight: 500;
+            transition: background .2s, border-color .2s;
+        }
+
+        .pill:hover {
+            background: var(--leaf-mid);
+            color: #fff;
+            border-color: var(--leaf-mid);
+        }
+
+        /* ── LAUK CARDS ── */
+        .lauks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin: 40px 0;
+        }
+
+        .lauk {
+            background: var(--warm);
+            border-radius: 10px;
+            padding: 24px 20px;
+            border: 1px solid rgba(74,124,40,.15);
+            transition: transform .2s, box-shadow .2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lauk::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--leaf-mid), var(--saffron));
+        }
+
+        .lauk:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 36px rgba(45,80,22,.13);
+        }
+
+        .lauk .ico { font-size: 1.8rem; margin-bottom: 10px; display: block; }
+
+        .lauk h3 {
+            font-family: 'Fraunces', serif;
+            font-size: .98rem;
+            color: var(--leaf);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .lauk p {
+            font-size: .82rem;
+            line-height: 1.5;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* ── ORNAMENT ── */
+        .orn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 60px 0;
+        }
+
+        .orn::before, .orn::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+        }
+
+        .orn::before { background: linear-gradient(to right, transparent, var(--leaf-light)); }
+        .orn::after  { background: linear-gradient(to left,  transparent, var(--leaf-light)); }
+
+        .orn span { color: var(--leaf-light); font-size: .9rem; letter-spacing: .4em; }
+
+        /* ── INFO BOX ── */
+        .info-box {
+            background: var(--warm);
+            border: 1px solid rgba(74,124,40,.2);
+            border-radius: 10px;
+            padding: 36px 40px;
+            margin: 48px 0;
+        }
+
+        .info-box h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            color: var(--leaf);
+            margin-bottom: 22px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(74,124,40,.2);
+            font-weight: 600;
+        }
+
+        .info-row {
+            display: flex;
+            gap: 16px;
+            padding: 11px 0;
+            border-bottom: 1px solid rgba(74,124,40,.08);
+            font-size: .93rem;
+        }
+
+        .info-row:last-child { border-bottom: none; }
+
+        .info-row .lbl {
+            min-width: 140px;
+            color: var(--muted);
+            font-size: .76rem;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding-top: 2px;
+        }
+
+        .info-row .val { color: var(--text); line-height: 1.55; }
+
+        /* ── MAP ── */
+        .map-wrap { margin: 56px 0 0; }
+
+        .map-wrap iframe {
+            width: 100%;
+            height: 380px;
+            border: 0;
+            border-radius: 10px;
+            display: block;
+            margin-top: 22px;
+            box-shadow: 0 8px 32px rgba(45,80,22,.14);
+        }
+
+        .map-link {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: .82rem;
+            color: var(--leaf-mid);
+            text-decoration: underline;
+            font-style: italic;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--leaf);
+            text-align: center;
+            padding: 34px 16px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--leaf-mid), var(--saffron), var(--gold), var(--saffron), var(--leaf-mid));
+        }
+
+        footer p {
+            font-size: .78rem;
+            letter-spacing: .1em;
+            color: rgba(255,255,255,.38);
+            margin: 0;
+        }
+
+        footer strong { color: var(--saffron); }
+
+        @media (max-width: 620px) {
+            .side-layout { grid-template-columns: 1fr; }
+            .side-layout.reverse { direction: ltr; }
+            .side-img { height: 220px; }
+            .pull { padding: 30px 24px; margin: 40px 0; }
+            .pull p { font-size: 1.2rem; }
+            .info-box { padding: 24px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-tex"></div>
+
+    <div class="hero-content">
+        <div class="badge">Kuliner Tradisional · Blitar, Jawa Timur</div>
+        <h1>
+            Nasi Pecel
+            <em>Sarapan Jiwa dari Tanah Blitar</em>
+        </h1>
+        <p class="hero-sub">
+            Sepiring nasi hangat, sayuran segar rebus, dan siraman sambal kacang yang gurih-manis-pedas — kesederhanaan yang menjadi keagungan di meja makan Blitar.
+        </p>
+    </div>
+
+    <div class="scroll-hint">Jelajahi</div>
+</div>
+
+<!-- ── STATS ── -->
+<div class="stats">
+    <div class="stat">
+        <span class="v">6+</span>
+        <span class="l">Jenis Sayuran</span>
+    </div>
+    <div class="stat">
+        <span class="v">Kacang</span>
+        <span class="l">Sambal Rahasia</span>
+    </div>
+    <div class="stat">
+        <span class="v">Segar</span>
+        <span class="l">Setiap Hari</span>
+    </div>
+    <div class="stat">
+        <span class="v">Rp 8rb+</span>
+        <span class="l">Mulai Dari</span>
+    </div>
+</div>
+
+<!-- ── ARTIKEL ── -->
+<div class="article">
+
+    <p class="intro">
+        Saat fajar menyingsing di Blitar, aroma sambal kacang yang mengepul dari dapur warung-warung kecil sudah mengundang siapa pun untuk mendekat. Nasi Pecel — hidangan sederhana nan penuh karakter ini — bukan sekadar makanan pagi. Ia adalah ritual, ia adalah kenangan, ia adalah identitas yang mengakar dalam kehidupan sehari-hari masyarakat Blitar.
+    </p>
+
+    <p>
+        Berbeda dari nasi pecel di daerah lain, Nasi Pecel Blitar memiliki sambal kacang dengan karakter tersendiri: lebih kental, aroma daun jeruk purut yang lebih kuat, dan tingkat kepedasan yang bisa disesuaikan. Di sinilah keunikan itu hadir — dalam setiap sendok sambal yang memeluk sayuran segar dengan kelembutan rasa yang tak tertandingi.
+    </p>
+
+    <!-- SIDE LAYOUT 1 -->
+    <div class="side-layout">
+        <div class="side-img">
+            <img src="https://i.pinimg.com/736x/ed/10/e9/ed10e982a2c2627bf08bceaa8aef4605.jpg" alt="Nasi Pecel Blitar">
+            <div class="cap">Sepiring Nasi Pecel Blitar yang menggugah selera</div>
+        </div>
+        <div class="side-text">
+            <h3>Warisan Cita Rasa yang Tak Lekang</h3>
+            <p>
+                Nasi Pecel sudah menjadi bagian dari kehidupan masyarakat Blitar selama bergenerasi. Setiap ibu rumah tangga, setiap pedagang pasar, setiap warung kecil di sudut kota — semua punya versi dan kebanggaan tersendiri atas sambal kacang racikannya.
+            </p>
+            <p>
+                Bukan hanya soal rasa, tapi soal cara memakannya pun punya ritual tersendiri: daun pisang sebagai alas piring, tempe goreng yang masih panas, dan rempeyek yang renyah — semua berpadu menciptakan pengalaman makan yang utuh dan memuaskan.
+            </p>
+        </div>
+    </div>
+
+    <div class="pull">
+        <p>"Nasi Pecel Blitar adalah pelukan hangat dalam sepiring — sederhana, jujur, dan selalu membuat rindu pulang ke rumah."</p>
+        <cite>— Catatan Kuliner Jawa Timur</cite>
+    </div>
+
+    <h2 class="s-head">Rahasia Sambal Kacang Blitar</h2>
+
+    <p>
+        Jiwa dari Nasi Pecel adalah sambalnya. Sambal kacang Blitar diracik dari kacang tanah sangrai yang dihaluskan bersama cabai merah, bawang putih, kencur, daun jeruk, gula merah, garam, dan sedikit asam jawa. Perpaduan bahan-bahan ini menghasilkan bumbu yang kompleks namun harmonis — gurih di depan, manis di tengah, dan pedas yang menghantam perlahan di akhir.
+    </p>
+
+    <!-- SIDE LAYOUT 2 -->
+    <div class="side-layout reverse">
+        <div class="side-img">
+            <img src="https://i.pinimg.com/1200x/8e/ae/bf/8eaebfaa06a353cc6b2b6626dae8aedd.jpg" alt="Sambal kacang dan sayuran pecel">
+            <div class="cap">Sambal kacang kental disiramkan di atas aneka sayuran segar</div>
+        </div>
+        <div class="side-text">
+            <h3>Sayuran Segar yang Menjadi Bintang</h3>
+            <p>
+                Sayuran dalam nasi pecel dipilih dengan cermat dan direbus sebentar agar tetap segar, hijau, dan renyah. Tidak lembek, tidak mentah — ada titik sempurna yang hanya diketahui oleh tangan-tangan berpengalaman.
+            </p>
+            <p>
+                Bayam yang lembut, kacang panjang yang sedikit renyah, tauge yang segar, daun singkong yang legit, dan kemangi yang wangi — semuanya hadir membentuk orkestra rasa yang dipimpin oleh sambal kacang sebagai konduktornya.
+            </p>
+        </div>
+    </div>
+
+    <h2 class="s-head">Isi Sayuran yang Kaya</h2>
+    <p>Keistimewaan Nasi Pecel Blitar terletak pada beragamnya pilihan sayuran yang digunakan, semuanya segar dipetik dan direbus dengan presisi:</p>
+
+    <div class="pills">
+        <span class="pill">🥬 Bayam</span>
+        <span class="pill">🫛 Kacang Panjang</span>
+        <span class="pill">🌱 Tauge</span>
+        <span class="pill">🍃 Daun Singkong</span>
+        <span class="pill">🌿 Kemangi</span>
+        <span class="pill">🥦 Bunga Turi</span>
+        <span class="pill">🫑 Mentimun</span>
+        <span class="pill">🌾 Daun Pepaya</span>
+    </div>
+
+    <h2 class="s-head">Lauk Pelengkap Favorit</h2>
+    <p>Nasi Pecel semakin istimewa dengan aneka lauk yang bisa dipilih sesuai selera — dari yang klasik hingga yang penuh petualangan rasa:</p>
+
+    <div class="lauks">
+        <div class="lauk">
+            <span class="ico">🫘</span>
+            <h3>Tempe Goreng</h3>
+            <p>Tempe tipis yang digoreng crispy — lauk wajib yang selalu habis duluan.</p>
+        </div>
+        <div class="lauk">
+            <span class="ico">🍳</span>
+            <h3>Telur Ceplok</h3>
+            <p>Telur mata sapi setengah matang dengan pinggir yang garing dan kuning yang lumer.</p>
+        </div>
+        <div class="lauk">
+            <span class="ico">🍗</span>
+            <h3>Ayam Goreng</h3>
+            <p>Potongan ayam kampung goreng berbumbu kuning yang garing di luar, juicy di dalam.</p>
+        </div>
+        <div class="lauk">
+            <span class="ico">🫙</span>
+            <h3>Rempeyek</h3>
+            <p>Kerupuk tipis berbumbu dengan kacang yang memberikan sensasi renyah di setiap gigitan.</p>
+        </div>
+        <div class="lauk">
+            <span class="ico">🍢</span>
+            <h3>Sate Usus</h3>
+            <p>Tusukan jeroan ayam yang dibakar — pilihan berani yang dicintai para penggemar sejati.</p>
+        </div>
+        <div class="lauk">
+            <span class="ico">🧆</span>
+            <h3>Perkedel Jagung</h3>
+            <p>Gorengan jagung manis berbumbu yang renyah di luar dan lembut manis di dalam.</p>
+        </div>
+    </div>
+
+    <div class="orn"><span>✦ ✦ ✦</span></div>
+
+    <!-- INFO BOX -->
+    <div class="info-box">
+        <h3>Informasi Kuliner</h3>
+        <div class="info-row">
+            <span class="lbl">Lokasi Populer</span>
+            <span class="val">Nasi Pecel Mbok Bari, Pasar Legi Blitar, dan berbagai warung pecel di Jl. Veteran & Jl. Tentara Pelajar</span>
+        </div>
+        <div class="info-row">
+            <span class="lbl">Jam Buka</span>
+            <span class="val">Sarapan pagi mulai 05.30 – 10.00 WIB (beberapa warung buka hingga siang)</span>
+        </div>
+        <div class="info-row">
+            <span class="lbl">Harga</span>
+            <span class="val">Mulai Rp 8.000 (tanpa lauk) · Dengan lauk lengkap Rp 15.000 – Rp 25.000</span>
+        </div>
+        <div class="info-row">
+            <span class="lbl">Tips</span>
+            <span class="val">Datang sebelum jam 8 pagi untuk mendapatkan sayuran paling segar dan sambal yang baru diuleg</span>
+        </div>
+        <div class="info-row">
+            <span class="lbl">Cocok untuk</span>
+            <span class="val">Sarapan, makan siang ringan, wisata kuliner keluarga, vegetarian (tanpa lauk daging)</span>
+        </div>
+    </div>
+
+    <!-- MAP -->
+    <div class="map-wrap">
+        <h2 class="s-head">Temukan di Peta</h2>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.946!2d112.173999!3d-8.0997681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78ec71d5830e03%3A0x4a144860b1fd7b13!2sNasi%20Pecel%20Mbok%20Bari%203!5e0!3m2!1sid!2sid!4v1710000000000"
+            allowfullscreen=""
+            loading="lazy"
+            title="Lokasi Nasi Pecel Mbok Bari Blitar">
+        </iframe>
+        <a class="map-link"
+           href="https://www.google.com/maps/search/Nasi+Pecel+Blitar"
+           target="_blank">
+           Cari Warung Nasi Pecel di Google Maps ↗
+        </a>
+    </div>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <p>Artikel Kuliner &nbsp;·&nbsp; <strong>Nasi Pecel Khas Blitar</strong> &nbsp;·&nbsp; Jawa Timur, Indonesia</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sate Kambing Khas Blitar — Legenda Kuliner Tanah Blitar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --charcoal:   #1a1008;
+            --brown:      #3d1f08;
+            --amber:      #c45e0a;
+            --ember:      #e8821a;
+            --gold:       #f0b429;
+            --cream:      #fdf6ec;
+            --parchment:  #f5e8d0;
+            --smoke:      #f9f2e8;
+            --text:       #1e0f04;
+            --muted:      #7a5c3a;
+        }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--cream);
+            color: var(--text);
+            font-family: 'Lora', Georgia, serif;
+            overflow-x: hidden;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 620px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://i.pinimg.com/1200x/52/e9/e8/52e9e8b72414c3e76ea0e4e8f14071cb.jpg');
+            background-size: cover;
+            background-position: center 40%;
+            filter: brightness(.55) saturate(1.3);
+            transform: scale(1.05);
+            animation: zoomHero 18s ease-out forwards;
+        }
+
+        @keyframes zoomHero { to { transform: scale(1); } }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(10,5,0,.2) 0%,
+                transparent 30%,
+                rgba(26,16,8,.7) 70%,
+                rgba(26,16,8,.95) 100%
+            );
+        }
+
+        /* ember glow bottom */
+        .hero-glow {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 220px;
+            background: radial-gradient(ellipse at 50% 100%, rgba(228,100,20,.18) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 8vw 68px;
+            color: #fff;
+            animation: fadeUp .9s .15s both;
+            max-width: 720px;
+        }
+
+        @keyframes fadeUp {
+            from { opacity:0; transform:translateY(36px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Lora', serif;
+            font-size: .72rem;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: var(--gold);
+            border: 1px solid rgba(240,180,41,.4);
+            padding: 6px 18px;
+            border-radius: 2px;
+            margin-bottom: 22px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2.8rem, 8vw, 5.8rem);
+            font-weight: 900;
+            line-height: 1.0;
+            letter-spacing: -.01em;
+            text-shadow: 0 4px 32px rgba(0,0,0,.45);
+        }
+
+        .hero-content h1 em {
+            display: block;
+            font-size: .42em;
+            font-weight: 400;
+            font-style: italic;
+            color: rgba(240,180,41,.85);
+            letter-spacing: .06em;
+            margin-top: 10px;
+        }
+
+        .hero-sub {
+            margin-top: 20px;
+            font-size: 1rem;
+            font-style: italic;
+            opacity: .75;
+            max-width: 460px;
+            line-height: 1.7;
+        }
+
+        .scroll-cue {
+            position: absolute;
+            bottom: 26px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            text-align: center;
+            color: rgba(240,180,41,.5);
+            font-size: .62rem;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            font-family: 'Lora', serif;
+            animation: bobble 2.2s ease-in-out infinite;
+        }
+
+        .scroll-cue::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 36px;
+            background: linear-gradient(to bottom, rgba(240,180,41,.5), transparent);
+            margin: 6px auto 0;
+        }
+
+        @keyframes bobble {
+            0%,100% { transform: translateX(-50%) translateY(0); }
+            50%      { transform: translateX(-50%) translateY(7px); }
+        }
+
+        /* ── STAT STRIP ── */
+        .stats {
+            background: var(--charcoal);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            padding: 22px 38px;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,.07);
+            flex: 1;
+            min-width: 130px;
+        }
+
+        .stat:last-child { border-right: none; }
+
+        .stat .v {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: block;
+            line-height: 1;
+        }
+
+        .stat .l {
+            font-size: .68rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.4);
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* ── ARTICLE ── */
+        .article {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 80px 28px 100px;
+        }
+
+        /* intro + dropcap */
+        .intro {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            line-height: 1.88;
+            color: var(--brown);
+            padding-left: 26px;
+            border-left: 3px solid var(--amber);
+            margin-bottom: 52px;
+        }
+
+        .intro::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 5.2rem;
+            font-weight: 900;
+            color: var(--amber);
+            float: left;
+            line-height: .76;
+            margin: 8px 14px 0 -26px;
+        }
+
+        p {
+            font-size: 1.06rem;
+            line-height: 1.88;
+            color: #2a1505;
+            margin-bottom: 26px;
+        }
+
+        /* ── SECTION HEAD ── */
+        .s-head {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--brown);
+            margin: 64px 0 20px;
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .s-head::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 48px; height: 2px;
+            background: linear-gradient(to right, var(--amber), var(--gold));
+        }
+
+        /* ── PULL QUOTE ── */
+        .pull {
+            background: var(--charcoal);
+            color: #fff;
+            border-radius: 8px;
+            padding: 48px 52px;
+            margin: 56px -16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pull::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 12rem;
+            color: rgba(228,130,26,.1);
+            position: absolute;
+            top: -40px; left: 20px;
+            line-height: 1;
+        }
+
+        .pull p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.55rem;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--parchment);
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pull cite {
+            display: block;
+            margin-top: 18px;
+            font-size: .72rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-style: normal;
+            font-family: 'Lora', serif;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── GALLERY ── */
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 280px 200px;
+            gap: 12px;
+            margin: 52px 0;
+        }
+
+        .g-item {
+            overflow: hidden;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .g-item:first-child {
+            grid-column: span 2;
+        }
+
+        .g-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .55s ease;
+        }
+
+        .g-item:hover img { transform: scale(1.06); }
+
+        .g-item .cap {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 14px 18px;
+            background: linear-gradient(to top, rgba(26,16,8,.75), transparent);
+            color: rgba(255,255,255,.85);
+            font-size: .75rem;
+            font-style: italic;
+            letter-spacing: .04em;
+        }
+
+        /* ── RECIPE STEPS ── */
+        .steps {
+            margin: 44px 0;
+            counter-reset: step;
+        }
+
+        .step {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 24px;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            counter-increment: step;
+            min-width: 44px;
+            height: 44px;
+            background: var(--amber);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-num::before { content: counter(step); }
+
+        .step-body h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: var(--brown);
+            margin-bottom: 4px;
+        }
+
+        .step-body p {
+            font-size: .92rem;
+            line-height: 1.6;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* ── SPOTS CARDS ── */
+        .spots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 44px 0;
+        }
+
+        .spot {
+            background: var(--parchment);
+            border-radius: 10px;
+            padding: 26px 22px;
+            border: 1px solid rgba(196,94,10,.15);
+            transition: transform .2s, box-shadow .2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spot::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--amber), var(--gold));
+        }
+
+        .spot:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(61,31,8,.13);
+        }
+
+        .spot .ico { font-size: 1.9rem; margin-bottom: 12px; display: block; }
+
+        .spot h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: var(--brown);
+            margin-bottom: 7px;
+        }
+
+        .spot p {
+            font-size: .85rem;
+            line-height: 1.55;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* ── ORNAMENT ── */
+        .orn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 60px 0;
+        }
+
+        .orn::before, .orn::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--amber));
+        }
+
+        .orn::after { background: linear-gradient(to left, transparent, var(--amber)); }
+
+        .orn span { color: var(--amber); font-size: .95rem; letter-spacing: .4em; }
+
+        /* ── INFO BOX ── */
+        .info-box {
+            background: var(--parchment);
+            border: 1px solid rgba(196,94,10,.2);
+            border-radius: 10px;
+            padding: 36px 40px;
+            margin: 48px 0;
+        }
+
+        .info-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--brown);
+            margin-bottom: 22px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(196,94,10,.2);
+        }
+
+        .info-row {
+            display: flex;
+            gap: 16px;
+            padding: 11px 0;
+            border-bottom: 1px solid rgba(196,94,10,.08);
+            font-size: .93rem;
+        }
+
+        .info-row:last-child { border-bottom: none; }
+
+        .info-row .lbl {
+            min-width: 140px;
+            color: var(--muted);
+            font-size: .78rem;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+            font-weight: 500;
+            padding-top: 2px;
+        }
+
+        .info-row .val { color: var(--text); line-height: 1.55; }
+
+        /* ── MAP ── */
+        .map-wrap { margin: 56px 0 0; }
+
+        .map-wrap iframe {
+            width: 100%;
+            height: 380px;
+            border: 0;
+            border-radius: 10px;
+            display: block;
+            margin-top: 22px;
+            box-shadow: 0 8px 32px rgba(61,31,8,.15);
+        }
+
+        .map-link {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: .82rem;
+            color: var(--amber);
+            text-decoration: underline;
+            font-style: italic;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--charcoal);
+            text-align: center;
+            padding: 34px 16px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--brown), var(--amber), var(--gold), var(--amber), var(--brown));
+        }
+
+        footer p {
+            font-family: 'Lora', serif;
+            font-size: .78rem;
+            letter-spacing: .1em;
+            color: rgba(255,255,255,.38);
+            margin: 0;
+        }
+
+        footer strong { color: var(--gold); }
+
+        @media (max-width: 580px) {
+            .gallery { grid-template-columns: 1fr; grid-template-rows: auto; }
+            .g-item:first-child { grid-column: span 1; }
+            .g-item { height: 220px; }
+            .pull { padding: 30px 24px; margin: 40px 0; }
+            .pull p { font-size: 1.2rem; }
+            .info-box { padding: 24px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-glow"></div>
+
+    <div class="hero-content">
+        <div class="tag">Kuliner Khas · Blitar, Jawa Timur</div>
+        <h1>
+            Sate Kambing
+            <em>Legenda Kuliner dari Tanah Blitar</em>
+        </h1>
+        <p class="hero-sub">
+            Tusukan daging pilihan, bara arang yang menyala, aroma bumbu kecap yang mengepul — sebuah pengalaman kuliner yang tak pernah bisa terlupakan.
+        </p>
+    </div>
+
+    <div class="scroll-cue">Jelajahi</div>
+</div>
+
+<!-- ── STAT STRIP ── -->
+<div class="stats">
+    <div class="stat">
+        <span class="v">100%</span>
+        <span class="l">Daging Pilihan</span>
+    </div>
+    <div class="stat">
+        <span class="v">Arang</span>
+        <span class="l">Dibakar Tradisional</span>
+    </div>
+    <div class="stat">
+        <span class="v">Kecap</span>
+        <span class="l">Bumbu Rahasia</span>
+    </div>
+    <div class="stat">
+        <span class="v">Wajib</span>
+        <span class="l">Dicoba di Blitar</span>
+    </div>
+</div>
+
+<!-- ── ARTIKEL ── -->
+<div class="article">
+
+    <p class="intro">
+        Di antara deretan kuliner Nusantara yang kaya, Sate Kambing Khas Blitar memiliki tempat tersendiri di hati para pecinta masakan daging. Dari asap arang yang mengepul hingga aroma bumbu yang meresap sempurna ke dalam setiap serat daging — setiap tusukan adalah cerita tentang tradisi, kesabaran, dan cinta terhadap cita rasa otentik.
+    </p>
+
+    <p>
+        Sate kambing di Blitar bukan sekadar makanan biasa. Ia adalah warisan kuliner yang telah diwariskan turun-temurun oleh para penjual dan peracik bumbu yang menjaga resep rahasianya dengan penuh kebanggaan. Setiap warung sate di Blitar memiliki sentuhan tersendiri — namun semuanya sepakat pada satu hal: daging yang segar dan bara api yang tepat adalah kunci segalanya.
+    </p>
+
+    <div class="pull">
+        <p>"Satu tusuk sate kambing Blitar cukup untuk membuat siapa pun melupakan semua yang lain — sebab rasanya bukan hanya di lidah, tapi menyentuh kenangan."</p>
+        <cite>— Pecinta Kuliner Jawa Timur</cite>
+    </div>
+
+    <h2 class="s-head">Kelezatan dalam Setiap Tusukan</h2>
+
+    <p>
+        Rahasia kelezatan Sate Kambing Blitar terletak pada kesederhanaan yang dieksekusi dengan sempurna. Daging kambing muda pilihan dipotong seukuran dadu, ditusuk pada bambu yang telah direndam air, lalu dibakar perlahan di atas bara arang kayu yang panas merata. Proses pembakaran yang sabar inilah yang menghasilkan tekstur luar yang sedikit gosong namun bagian dalam tetap juicy dan lembut.
+    </p>
+
+    <p>
+        Bumbu kecap manis yang kaya rasa menjadi saus utama — disiramkan di atas sate yang masih panas, berpadu dengan irisan bawang merah segar, potongan cabai rawit, dan perasan jeruk limau. Perpaduan manis, gurih, pedas, dan asam dalam satu piring inilah yang membuat siapa pun ketagihan dan ingin kembali lagi.
+    </p>
+
+    <!-- GALLERY -->
+    <div class="gallery">
+        <div class="g-item">
+            <img src="https://i.pinimg.com/1200x/52/e9/e8/52e9e8b72414c3e76ea0e4e8f14071cb.jpg" alt="Sate Kambing Blitar di atas bara">
+            <div class="cap">Sate kambing dibakar di atas bara arang yang menyala</div>
+        </div>
+        <div class="g-item">
+            <img src="https://i.pinimg.com/1200x/68/2a/06/682a064530c2b63bd5654b9269933568.jpg" alt="Sate Kambing siap saji">
+            <div class="cap">Sajian sate kambing dengan bumbu kecap dan irisan bawang</div>
+        </div>
+        <div class="g-item">
+            <img src="https://i.pinimg.com/736x/bc/05/2d/bc052d41cd6a3d4f5fd5d7cfd326f9c0.jpg" alt="Sate Kambing Blitar lengkap">
+            <div class="cap">Sate kambing lengkap dengan lontong dan kuah gulai</div>
+        </div>
+    </div>
+
+    <h2 class="s-head">Cara Memasak yang Autentik</h2>
+
+    <p>
+        Yang membuat sate kambing Blitar istimewa adalah proses pembuatannya yang tidak tergesa-gesa. Tidak ada bumbu instan, tidak ada kompor gas — hanya daging segar, tangan terampil, dan bara arang yang menyala dengan sabar.
+    </p>
+
+    <div class="steps">
+        <div class="step">
+            <div class="step-num"></div>
+            <div class="step-body">
+                <h4>Pilih Daging Terbaik</h4>
+                <p>Daging kambing muda bagian has dalam atau paha dipilih untuk tekstur yang lebih lembut dan tidak terlalu berbau prengus.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num"></div>
+            <div class="step-body">
+                <h4>Tusuk & Lumuri Bumbu</h4>
+                <p>Potongan daging ditusuk bergantian dengan lemak kambing, lalu dilumuri campuran kecap manis, bawang putih, dan ketumbar halus.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num"></div>
+            <div class="step-body">
+                <h4>Bakar di Atas Arang</h4>
+                <p>Sate dibakar perlahan sambil terus dioles bumbu kecap, dibolak-balik hingga kecokelatan merata dengan aroma smoke yang khas.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num"></div>
+            <div class="step-body">
+                <h4>Sajikan Selagi Panas</h4>
+                <p>Sate langsung disajikan dengan irisan bawang merah, cabai segar, tomat, dan siraman kecap — dimakan bersama nasi hangat atau lontong.</p>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="s-head">Nikmati Bersama Pelengkapnya</h2>
+
+    <div class="spots">
+        <div class="spot">
+            <span class="ico">🍚</span>
+            <h3>Nasi Hangat</h3>
+            <p>Pasangan klasik yang tak tergantikan — nasi pulen hangat menyerap semua bumbu kecap dengan sempurna.</p>
+        </div>
+        <div class="spot">
+            <span class="ico">🫕</span>
+            <h3>Gulai & Tongseng</h3>
+            <p>Kuah gulai kental berbumbu rempah atau tongseng pedas menjadi pelengkap yang menghangatkan.</p>
+        </div>
+        <div class="spot">
+            <span class="ico">🫙</span>
+            <h3>Lontong</h3>
+            <p>Lontong padat yang kenyal menjadi alternatif nasi yang cocok untuk menyerap bumbu sate yang kaya rasa.</p>
+        </div>
+        <div class="spot">
+            <span class="ico">🧅</span>
+            <h3>Acar Bawang</h3>
+            <p>Irisan bawang merah dan cabai segar yang menyegarkan — memotong lemak dan menambah sensasi pedas alami.</p>
+        </div>
+    </div>
+
+    <div class="orn"><span>✦ ✦ ✦</span></div>
+
+    <!-- INFO BOX -->
+    <div class="info-box">
+        <h3>🗺️ Informasi Kuliner</h3>
+        <div class="info-row">
+            <span class="lbl">Lokasi Populer</span>
+            <span class="val">Sate Kambing & Gule H. Sujito, Blitar — serta berbagai warung sate di sepanjang Jl. Merdeka & Jl. Sudirman</span>
+        </div>
+        <div class="info-row">
+            <span class="lbl">Jam Buka</span>
+            <span class="val">Umumnya 10.00 – 22.00 WIB (beberapa buka hingga tengah malam)</span>
+        </div>
+        <div class="info-row">
+            <span class="lbl">Harga</span>
+            <span class="val">Rp 3.000 – Rp 5.000 per tusuk · Porsi lengkap mulai Rp 25.000</span>
+        </div>
+        <div class="info-row">
+            <span class="lbl">Menu Andalan</span>
+            <span class="val">Sate campur (daging + jeroan), gulai kepala, tongseng kambing</span>
+        </div>
+        <div class="info-row">
+            <span class="lbl">Tips</span>
+            <span class="val">Datang lebih awal — warung sate terbaik di Blitar sering kehabisan stok sebelum malam hari</span>
+        </div>
+    </div>
+
+    <!-- MAP -->
+    <div class="map-wrap">
+        <h2 class="s-head">Temukan di Peta</h2>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.950!2d112.1668567!3d-8.0985408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78ec6d12247ed1%3A0xdd60e413c9282618!2sSate%20Kambing%20%26%20Gule%20H.Sujito!5e0!3m2!1sid!2sid!4v1710000000000"
+            allowfullscreen=""
+            loading="lazy"
+            title="Lokasi Sate Kambing H. Sujito Blitar">
+        </iframe>
+        <a class="map-link"
+           href="https://www.google.com/maps/search/Sate+Kambing+Blitar"
+           target="_blank">
+           📍 Cari Warung Sate di Google Maps ↗
+        </a>
+    </div>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <p>Artikel Kuliner &nbsp;·&nbsp; <strong>Sate Kambing Khas Blitar</strong> &nbsp;·&nbsp; Jawa Timur, Indonesia</p>
+</footer>
+
+</body>
+</html>

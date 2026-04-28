@@ -1,0 +1,215 @@
+/* ===== DETAIL PAGE ===== */
+.detail-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f8f9fb 0%, #ffffff 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* noise + pattern halus biar tidak polos */
+.detail-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ===== HERO ===== */
+.detail-hero {
+  position: relative;
+  height: 55vh;
+  min-height: 360px;
+  max-height: 520px;
+  overflow: hidden;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+/* efek zoom pelan */
+.detail-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+  animation: heroZoom 8s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1.05); }
+  to { transform: scale(1.12); }
+}
+
+/* gradient overlay lebih cinematic */
+.detail-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.2),
+    rgba(0,0,0,0.35),
+    rgba(0,0,0,0.6)
+  );
+}
+
+/* ===== BACK BUTTON ===== */
+.back-btn {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(10px);
+  color: var(--primary);
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.back-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  background: var(--primary);
+  color: #fff;
+}
+
+/* ===== CONTAINER ===== */
+.detail-container {
+  max-width: 850px;
+  margin: -70px auto 0;
+  padding: 45px 35px 70px;
+  background: #fff;
+  border-radius: 28px 28px 0 0;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 -15px 50px rgba(0,0,0,0.08);
+  animation: fadeUp 0.6s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== TITLE ===== */
+.detail-container h1 {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.3;
+  margin-bottom: 22px;
+}
+
+.detail-container h1::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  margin-top: 12px;
+  border-radius: 10px;
+}
+
+/* ===== INFO ===== */
+.detail-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding: 18px 0;
+  border-top: 1px dashed #e5e5e5;
+  border-bottom: 1px dashed #e5e5e5;
+  margin-bottom: 30px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: #555;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(0,0,0,0.03);
+}
+
+.info-item i {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(231,111,81,0.15);
+  color: var(--accent);
+  border-radius: 50%;
+}
+
+/* ===== CONTENT ===== */
+.detail-content p {
+  font-size: 1.02rem;
+  line-height: 1.9;
+  color: #444;
+  margin-bottom: 18px;
+  text-align: justify;
+  transition: 0.3s;
+}
+
+/* hover efek baca */
+.detail-content p:hover {
+  color: #222;
+}
+
+/* ===== CTA ===== */
+.detail-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.detail-cta .btn {
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.detail-cta .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* ===== DARK MODE ===== */
+body.dark .detail-page {
+  background: linear-gradient(180deg, #0f172a, #111827);
+}
+
+body.dark .detail-container {
+  background: #1b263b;
+  box-shadow: none;
+}
+
+body.dark .info-item {
+  background: rgba(255,255,255,0.05);
+  color: #ccc;
+}
+
+body.dark .detail-content p {
+  color: #cbd5e1;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .detail-container {
+    margin-top: -50px;
+    padding: 30px 22px 55px;
+  }
+
+  .detail-container h1 {
+    font-size: 1.7rem;
+  }
+}

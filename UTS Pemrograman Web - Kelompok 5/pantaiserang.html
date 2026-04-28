@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantai Serang — Surga Tersembunyi di Blitar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sand:    #f7f0e6;
+            --sand2:   #ede3d4;
+            --ocean:   #0d3d4f;
+            --ocean2:  #1a5c72;
+            --wave:    #2e8fa8;
+            --foam:    #e4f3f8;
+            --gold:    #c8923a;
+            --gold2:   #e8b96a;
+            --text:    #1e1a16;
+            --muted:   #7a6f64;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--sand);
+            color: var(--text);
+            font-family: 'Jost', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 45%;
+            filter: brightness(.65) saturate(1.15);
+            transform: scale(1.06);
+            animation: slowZoom 16s ease forwards;
+        }
+
+        @keyframes slowZoom {
+            to { transform: scale(1); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                160deg,
+                rgba(5,20,28,.18) 0%,
+                rgba(10,35,48,.4) 50%,
+                rgba(5,18,28,.82) 100%
+            );
+        }
+
+        .hero-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 0 8vw 7vh;
+            animation: fadeUp .9s .3s both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(32px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .tag-pill {
+            display: inline-block;
+            font-family: 'Jost', sans-serif;
+            font-size: .68rem;
+            font-weight: 500;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: var(--gold2);
+            border: 1px solid var(--gold2);
+            padding: 5px 16px;
+            border-radius: 40px;
+            margin-bottom: 20px;
+            width: fit-content;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(3.5rem, 9vw, 7rem);
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.0;
+            letter-spacing: -.01em;
+            text-shadow: 0 4px 32px rgba(0,0,0,.3);
+            margin-bottom: 14px;
+        }
+
+        .hero-sub {
+            font-size: clamp(.9rem, 1.6vw, 1.05rem);
+            font-weight: 300;
+            color: rgba(255,255,255,.8);
+            max-width: 480px;
+            line-height: 1.7;
+            letter-spacing: .02em;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 32px;
+            right: 8vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,.5);
+            font-size: .65rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(255,255,255,.5), transparent);
+            animation: scrollPulse 2s infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: .3; }
+            50% { opacity: 1; }
+        }
+
+        /* ── META STRIP ── */
+        .meta-strip {
+            background: var(--ocean);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 20px 36px;
+            border-right: 1px solid rgba(255,255,255,.08);
+            color: rgba(255,255,255,.7);
+            font-size: .8rem;
+            letter-spacing: .06em;
+        }
+
+        .meta-item:last-child { border-right: none; }
+        .meta-item .mi-val { color: var(--gold2); font-weight: 500; font-size: .85rem; }
+        .meta-icon { font-size: 1.1rem; }
+
+        /* ── LAYOUT ── */
+        .journal {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 72px 28px 100px;
+        }
+
+        /* ── INTRO BLOCK ── */
+        .intro-block {
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 40px;
+            align-items: start;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 640px) {
+            .intro-block { grid-template-columns: 1fr; }
+        }
+
+        .intro-img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            border-radius: 4px 4px 60px 4px;
+            display: block;
+            box-shadow: 8px 8px 32px rgba(13,61,79,.15);
+        }
+
+        .intro-text { padding-top: 8px; }
+
+        .intro-text p:first-child::first-letter {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.8rem;
+            font-weight: 700;
+            color: var(--ocean);
+            float: left;
+            line-height: .78;
+            margin: 6px 10px 0 0;
+        }
+
+        .intro-text p {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: #3a3028;
+            margin-bottom: 20px;
+        }
+
+        /* ── SECTION HEADING ── */
+        .sec-head {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--ocean);
+            margin: 56px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .sec-head::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, var(--gold), transparent);
+        }
+
+        p.body-text {
+            font-size: 1.02rem;
+            line-height: 1.85;
+            color: #3a3028;
+            margin-bottom: 22px;
+        }
+
+        /* ── PULL QUOTE ── */
+        .pull-quote {
+            margin: 48px -20px;
+            padding: 32px 40px;
+            background: var(--ocean);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pull-quote::before {
+            content: '"';
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12rem;
+            color: rgba(255,255,255,.06);
+            position: absolute;
+            top: -20px; left: 16px;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .pull-quote p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #fff;
+            line-height: 1.55;
+            margin: 0;
+            position: relative;
+        }
+
+        .pull-quote cite {
+            display: block;
+            margin-top: 14px;
+            font-size: .72rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: var(--gold2);
+            font-style: normal;
+        }
+
+        /* ── HIGHLIGHT CARDS ── */
+        .cards-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 36px 0 48px;
+        }
+
+        @media (max-width: 600px) {
+            .cards-row { grid-template-columns: 1fr; }
+        }
+
+        .h-card {
+            background: #fff;
+            border: 1px solid var(--sand2);
+            border-radius: 12px;
+            padding: 28px 20px 24px;
+            text-align: center;
+            transition: transform .25s, box-shadow .25s;
+        }
+
+        .h-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(13,61,79,.12);
+        }
+
+        .h-card .ico { font-size: 2.2rem; margin-bottom: 12px; display: block; }
+
+        .h-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--ocean);
+            margin-bottom: 8px;
+        }
+
+        .h-card p {
+            font-size: .85rem;
+            color: var(--muted);
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        /* ── DIVIDER ── */
+        .ornament {
+            text-align: center;
+            color: var(--gold);
+            font-size: 1.1rem;
+            letter-spacing: .6em;
+            margin: 44px 0;
+            opacity: .45;
+        }
+
+        /* ── MAP + INFO SECTION ── */
+        .map-info {
+            margin: 52px 0;
+        }
+
+        .map-info-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 24px;
+            align-items: start;
+            margin-top: 24px;
+        }
+
+        @media (max-width: 640px) {
+            .map-info-grid { grid-template-columns: 1fr; }
+        }
+
+        .map-info-grid iframe {
+            width: 100%;
+            height: 320px;
+            border: 0;
+            border-radius: 12px;
+            display: block;
+            box-shadow: 0 4px 20px rgba(13,61,79,.1);
+        }
+
+        .info-panel {
+            background: var(--ocean);
+            border-radius: 12px;
+            padding: 28px 26px;
+            color: #fff;
+        }
+
+        .info-panel h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--gold2);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,.12);
+        }
+
+        .info-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 14px;
+            font-size: .88rem;
+            align-items: flex-start;
+        }
+
+        .info-row .lbl {
+            min-width: 100px;
+            font-weight: 500;
+            font-size: .75rem;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--gold2);
+            padding-top: 3px;
+        }
+
+        .info-row .val {
+            color: rgba(255,255,255,.85);
+            line-height: 1.55;
+        }
+
+        /* ── SCHEDULE ── */
+        .schedule {
+            margin: 52px 0 0;
+        }
+
+        .schedule-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 28px;
+            margin-top: 24px;
+            align-items: start;
+        }
+
+        @media (max-width: 580px) {
+            .schedule-wrap { grid-template-columns: 1fr; }
+        }
+
+        .sched-img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+            box-shadow: 0 4px 16px rgba(0,0,0,.1);
+        }
+
+        .sched-img-cap {
+            font-size: .75rem;
+            color: var(--muted);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .sched-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 14px rgba(13,61,79,.09);
+            font-size: .9rem;
+        }
+
+        .sched-table thead tr { background: var(--ocean); }
+
+        .sched-table th {
+            padding: 14px 20px;
+            color: #fff;
+            text-align: left;
+            font-family: 'Jost', sans-serif;
+            font-weight: 500;
+            font-size: .75rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .sched-table td {
+            padding: 13px 20px;
+            border-bottom: 1px solid #ddeef4;
+            color: var(--text);
+        }
+
+        .sched-table tbody tr:nth-child(odd)  { background: #fff; }
+        .sched-table tbody tr:nth-child(even) { background: var(--foam); }
+        .sched-table tbody tr:last-child td   { border-bottom: none; }
+
+        .sched-table .special td {
+            background: #e5f4ea !important;
+            font-weight: 500;
+        }
+
+        .sched-table .jam { color: var(--ocean); font-weight: 600; }
+
+        .sched-note {
+            margin-top: 12px;
+            font-size: .78rem;
+            color: var(--muted);
+            line-height: 1.55;
+            background: #fff8ec;
+            border-left: 3px solid var(--gold);
+            padding: 10px 14px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--ocean);
+            color: rgba(255,255,255,.5);
+            text-align: center;
+            padding: 32px 16px;
+            font-size: .78rem;
+            letter-spacing: .08em;
+        }
+
+        footer strong { color: var(--gold2); }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+    <img class="hero-img"
+        src="https://travelspromo.com/wp-content/uploads/2020/12/17-Yabunayya-Habibi-1536x1152.jpg"
+        alt="Panorama Pantai Serang, Blitar">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="tag-pill">Wisata Alam · Blitar</div>
+        <h1 class="hero-title">Pantai<br>Serang</h1>
+        <p class="hero-sub">Surga tersembunyi di pesisir selatan Jawa — hamparan pasir, ombak liar, dan udara segar yang membebaskan jiwa.</p>
+    </div>
+    <div class="scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+    </div>
+</div>
+
+<!-- META STRIP -->
+<div class="meta-strip">
+    <div class="meta-item"><span class="meta-icon">📍</span><span>Lokasi: <span class="mi-val">Panggungrejo, Blitar</span></span></div>
+    <div class="meta-item"><span class="meta-icon">🕗</span><span>Buka: <span class="mi-val">24 Jam</span></span></div>
+    <div class="meta-item"><span class="meta-icon">🎫</span><span>Tiket: <span class="mi-val">Terjangkau</span></span></div>
+    <div class="meta-item"><span class="meta-icon">🌊</span><span>Ombak: <span class="mi-val">Laut Selatan</span></span></div>
+</div>
+
+<!-- JOURNAL CONTENT -->
+<div class="journal">
+
+    <!-- INTRO: foto + teks -->
+    <div class="intro-block">
+        <img class="intro-img"
+            src="https://travelspromo.com/wp-content/uploads/2020/12/17-Poundra-Windyanto-1536x1152.jpg"
+            alt="Pantai Serang">
+        <div class="intro-text">
+            <p>Pantai Serang merupakan salah satu destinasi wisata pantai populer di Kabupaten Blitar, tepatnya berada di Desa Serang, Kecamatan Panggungrejo. Pantai ini dikenal dengan keindahan alamnya yang masih alami dan memukau.</p>
+            <p>Hamparan pasir putih yang luas berpadu dengan birunya laut selatan, tebing-tebing karang yang kokoh, serta ombak yang menenangkan menciptakan suasana yang sangat indah dan nyaman untuk berlibur.</p>
+            <p>Pengunjung dapat menikmati berbagai aktivitas seperti bermain pasir, berfoto, menikmati sunset, hingga mencicipi kuliner seafood di sekitar pantai.</p>
+        </div>
+    </div>
+
+    <div class="pull-quote">
+        <p>"Pantai Serang kerap dijuluki sebagai 'Kuta-nya Blitar' — keindahannya yang lapang dan ombaknya yang bertenaga menjadi daya tarik yang sulit dilupakan."</p>
+        <cite>— Catatan Perjalanan Wisatawan Lokal</cite>
+    </div>
+
+    <h2 class="sec-head">Keistimewaan Pantai Serang</h2>
+
+    <p class="body-text">Salah satu daya tarik utama Pantai Serang adalah luasnya bibir pantai yang membentang panjang, memberikan ruang yang cukup bagi pengunjung untuk beraktivitas tanpa merasa berdesakan. Ombak besar khas laut selatan Jawa menjadikan pantai ini ideal bagi mereka yang ingin mencoba olahraga selancar atau sekadar menikmati sensasi bermain di tepian ombak.</p>
+
+    <p class="body-text">Pantai Serang juga terkenal sebagai lokasi penyelenggaraan upacara adat Larung Sesaji yang rutin diadakan masyarakat setempat — menjadikannya destinasi yang kaya akan nilai budaya di samping keindahan alamnya.</p>
+
+    <!-- HIGHLIGHT CARDS -->
+    <div class="cards-row">
+        <div class="h-card">
+            <span class="ico">🏄</span>
+            <h3>Berselancar</h3>
+            <p>Ombak besar laut selatan cocok untuk pemula hingga peselancar berpengalaman.</p>
+        </div>
+        <div class="h-card">
+            <span class="ico">🌅</span>
+            <h3>Sunset Dramatis</h3>
+            <p>Langit sore keemasan menjadi momen yang wajib diabadikan bersama orang tercinta.</p>
+        </div>
+        <div class="h-card">
+            <span class="ico">🧺</span>
+            <h3>Piknik Keluarga</h3>
+            <p>Hamparan pasir luas dan suasana tenang, sempurna untuk bersantai bersama keluarga.</p>
+        </div>
+    </div>
+
+    <div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <p class="body-text">Berbeda dengan sejumlah destinasi wisata pantai yang mulai padat oleh pembangunan komersial, Pantai Serang masih mempertahankan nuansa alaminya. Vegetasi hijau di sekitar pantai, hamparan pasir yang bersih, serta udara segar menjadi kelebihan yang membuat para pengunjung betah berlama-lama.</p>
+
+    <p class="body-text">Dengan panorama alam yang autentik dan suasana yang menenangkan, Pantai Serang menjadi tempat wisata favorit bagi wisatawan lokal maupun luar daerah — sebuah surga kecil yang layak dikunjungi kapan pun.</p>
+
+    <!-- MAP + INFO -->
+    <div class="map-info">
+        <h2 class="sec-head">Lokasi & Informasi</h2>
+        <div class="map-info-grid">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63245.184!2d111.95!3d-8.31!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78c7930c3340c1%3A0xa55ccd0b88345c6c!2sWisata%20Pantai%20Serang!5e0!3m2!1sid!2sid!4v1710000000000"
+                allowfullscreen="" loading="lazy"
+                title="Lokasi Pantai Serang">
+            </iframe>
+            <div class="info-panel">
+                <h3>ℹ️ Info Kunjungan</h3>
+                <div class="info-row">
+                    <span class="lbl">Lokasi</span>
+                    <span class="val">Desa Serang, Kec. Panggungrejo, Kab. Blitar, Jawa Timur</span>
+                </div>
+                <div class="info-row">
+                    <span class="lbl">Fasilitas</span>
+                    <span class="val">Parkir, warung makan, toilet umum, area bermain</span>
+                </div>
+                <div class="info-row">
+                    <span class="lbl">Tiket</span>
+                    <span class="val">Terjangkau — cocok untuk semua kalangan</span>
+                </div>
+                <div class="info-row">
+                    <span class="lbl">Tips</span>
+                    <span class="val">Hindari mandi terlalu jauh dari tepi — ombak laut selatan bisa sangat kuat</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCHEDULE -->
+    <div class="schedule">
+        <h2 class="sec-head">Jam Operasional</h2>
+        <div class="schedule-wrap">
+            <div>
+                <img class="sched-img"
+                    src="https://travelspromo.com/wp-content/uploads/2020/12/17-Yabunayya-Habibi-1536x1152.jpg"
+                    alt="Pantai Serang pagi hari">
+                <p class="sched-img-cap">Suasana Pantai Serang saat pagi hari</p>
+            </div>
+            <div>
+                <table class="sched-table">
+                    <thead>
+                        <tr><th>Hari</th><th>Jam Buka</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Senin – Jumat</td>
+                            <td class="jam">09.00 – 20.00</td>
+                        </tr>
+                        <tr class="special">
+                            <td>Sabtu</td>
+                            <td class="jam">24 Jam</td>
+                        </tr>
+                        <tr>
+                            <td>Minggu</td>
+                            <td class="jam">07.00 – 20.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="sched-note">⚠️ Jam operasional dapat berubah pada hari libur nasional. Disarankan cek terlebih dahulu sebelum berkunjung.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>Artikel Wisata &nbsp;·&nbsp; <strong>Pantai Serang, Blitar</strong> &nbsp;·&nbsp; Jawa Timur, Indonesia</p>
+</footer>
+
+</body>
+</html>
