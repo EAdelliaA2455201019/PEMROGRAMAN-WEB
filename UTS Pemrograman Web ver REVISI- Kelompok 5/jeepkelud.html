@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeep Gunung Kelud</title>
+
+<link rel="icon" href="assets/images/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#1D3557;
+  --accent:#00A6FB;
+  --bg:#f5f7fa;
+  --text:#2a2a2a;
+  --card:#ffffff;
+  --shadow:0 6px 18px rgba(0,0,0,0.08);
+  --radius:14px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.75;
+}
+
+/* HERO */
+.hero{
+  position:relative;
+  height:70vh;
+  overflow:hidden;
+}
+
+.hero img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(0.65);
+}
+
+.hero-text{
+  position:absolute;
+  bottom:40px;
+  left:50%;
+  transform:translateX(-50%);
+  text-align:center;
+  color:#fff;
+  width:90%;
+}
+
+.hero-text h1{
+  font-size:clamp(28px,5vw,52px);
+  font-weight:700;
+}
+
+.hero-text p{
+  margin-top:8px;
+  opacity:.9;
+}
+
+/* STATS */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  background:#0f1b2d;
+  color:#fff;
+  text-align:center;
+}
+
+.stats div{
+  padding:18px;
+  border-right:1px solid rgba(255,255,255,0.08);
+}
+
+.stats div:last-child{border:none;}
+
+.stats h3{
+  color:var(--accent);
+  font-size:18px;
+}
+
+.stats p{
+  font-size:11px;
+  opacity:.7;
+  margin-top:4px;
+}
+
+/* CONTAINER */
+.container{
+  max-width:920px;
+  margin:auto;
+  padding:50px 22px;
+}
+
+.intro{
+  font-size:18px;
+  border-left:4px solid var(--accent);
+  padding-left:14px;
+  margin-bottom:28px;
+  font-style:italic;
+  color:#444;
+}
+
+p{
+  margin-bottom:16px;
+  color:#555;
+}
+
+/* BOX */
+.box{
+  background:var(--card);
+  border-left:4px solid var(--accent);
+  padding:20px;
+  border-radius:10px;
+  box-shadow:var(--shadow);
+  margin:28px 0;
+}
+
+.box h3{
+  color:var(--primary);
+  margin-bottom:8px;
+}
+
+/* ACTIVITY */
+.activity-section{
+  margin-top:36px;
+}
+
+.activity-section h2{
+  font-size:16px;
+  color:var(--primary);
+  margin-bottom:18px;
+}
+
+.activity-cards{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.activity-card{
+  background:#fff;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+
+.activity-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.card-body{
+  padding:16px;
+}
+
+.card-body h4{
+  color:var(--primary);
+  margin-bottom:6px;
+}
+
+.card-body p{
+  font-size:14px;
+  color:#666;
+}
+
+/* TIPS */
+.tips{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:26px;
+}
+
+.tip{
+  background:#fff;
+  padding:14px;
+  border-radius:10px;
+  box-shadow:var(--shadow);
+  border-left:3px solid var(--accent);
+}
+
+.tip h4{
+  color:var(--primary);
+  font-size:13px;
+  margin-bottom:6px;
+}
+
+.tip p{
+  font-size:13px;
+  color:#666;
+}
+
+/* MAP */
+.map-section iframe{
+  width:100%;
+  height:320px;
+  border-radius:12px;
+  border:none;
+  margin-top:10px;
+}
+
+/* WHATSAPP */
+.wa-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:#fff;
+  padding:14px 18px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* FOOTER (SAMA) */
+.main-footer{
+  padding:50px 6% 28px;
+  background:#fafafa;
+  border-top:1px solid #eee;
+}
+
+.footer-container{
+  display:flex;
+  flex-wrap:wrap;
+  gap:40px;
+  justify-content:space-between;
+  max-width:1400px;
+  margin:auto;
+}
+
+.footer-col-brand{flex:2;min-width:220px;}
+
+.footer-logo-area{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.footer-logo-area img{
+  width:42px;
+  border-radius:6px;
+}
+
+.footer-logo-area h2{
+  font-size:1.05rem;
+  color:var(--primary);
+}
+
+.footer-col h3{
+  margin-bottom:12px;
+  color:var(--primary);
+}
+
+.footer-col ul{
+  list-style:none;
+}
+
+.footer-col ul li{
+  margin-bottom:8px;
+}
+
+.footer-col ul li a{
+  text-decoration:none;
+  color:#555;
+}
+
+.footer-col ul li a:hover{
+  color:var(--accent);
+}
+
+.footer-bottom{
+  text-align:center;
+  margin-top:32px;
+  padding-top:20px;
+  border-top:1px solid #e0e0e0;
+  color:#888;
+  font-size:.82rem;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .stats{grid-template-columns:1fr 1fr;}
+  .activity-cards{grid-template-columns:1fr;}
+  .tips{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <img src="https://backend.adventuraja.com/gallery/614169f38604ab6b185e8183/38181204_466219443892287_7779034553082970112_n.jpg">
+  <div class="hero-text">
+    <h1>Jeep Gunung Kelud</h1>
+    <p>Petualangan offroad vulkanik di Jawa Timur</p>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div><h3>1.731 mdpl</h3><p>Ketinggian</p></div>
+  <div><h3>2014</h3><p>Letusan Terakhir</p></div>
+  <div><h3>4x4 Jeep</h3><p>Offroad Vehicle</p></div>
+  <div><h3>2–3 Jam</h3><p>Durasi</p></div>
+</div>
+
+<div class="container">
+
+  <p class="intro">
+    Jeep Gunung Kelud menawarkan pengalaman offroad ekstrem di jalur bekas letusan gunung berapi.
+  </p>
+
+  <p>
+    Gunung Kelud merupakan salah satu gunung api aktif di Jawa Timur yang memiliki lanskap unik berupa pasir vulkanik, bebatuan besar, dan jalur ekstrem hasil erupsi.
+  </p>
+
+  <p>
+    Perjalanan menggunakan jeep 4x4 dimulai dari basecamp dengan pemandu berpengalaman yang memahami medan.
+  </p>
+
+  <!-- ACTIVITY -->
+  <div class="activity-section">
+    <h2>Aktivitas</h2>
+
+    <div class="activity-cards">
+
+      <div class="activity-card">
+        <img src="https://cdn.timesmedia.co.id/images/2021/05/24/jeep-x.jpg">
+        <div class="card-body">
+          <h4>Jeep Offroad</h4>
+          <p>Menjelajahi jalur pasir vulkanik dan medan ekstrem Gunung Kelud.</p>
+        </div>
+      </div>
+
+      <div class="activity-card">
+        <img src="https://i.pinimg.com/736x/5f/9e/6a/5f9e6a3fe49b268c4d434f4cba45c4e4.jpg">
+        <div class="card-body">
+          <h4>Trekking</h4>
+          <p>Menikmati jalur pendakian dengan panorama alam vulkanik.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>Pengalaman Utama</h3>
+    <p>Menjelajahi bekas letusan gunung berapi dengan jeep 4x4 yang penuh adrenalin.</p>
+  </div>
+
+  <div class="tips">
+    <div class="tip">
+      <h4>Pakaian</h4>
+      <p>Gunakan jaket dan sepatu nyaman.</p>
+    </div>
+    <div class="tip">
+      <h4>Waktu</h4>
+      <p>Pagi hari lebih ideal.</p>
+    </div>
+  </div>
+
+  <div class="map-section">
+    <iframe src="https://www.google.com/maps?q=Gunung+Kelud&output=embed"></iframe>
+  </div>
+
+</div>
+
+<!-- WA -->
+<a class="wa-btn" href="#">WhatsApp</a>
+
+<!-- FOOTER -->
+<footer class="main-footer">
+  <div class="footer-container">
+
+    <!-- BRAND -->
+    <div class="footer-col-brand">
+      <div class="footer-logo-area">
+        <img src="assets/images/jelajah-blitar.jpg" alt="Logo">
+        <h2>JELAJAH BLITAR</h2>
+      </div>
+      <div class="footer-contact">
+        <p>📞 0812-3439-4275</p>
+        <p>✉️ hello@jelajahblitar.com</p>
+      </div>
+    </div>
+
+    <!-- MENU -->
+    <div class="footer-col">
+      <h3>Menu</h3>
+      <ul>
+        <li><a href="index.html#destinasi">Wisata</a></li>
+        <li><a href="index.html#kuliner">Kuliner</a></li>
+        <li><a href="index.html#event">Event</a></li>
+      </ul>
+    </div>
+
+    <!-- LINK CEPAT -->
+    <div class="footer-col">
+      <h3>Link Cepat</h3>
+      <ul>
+        <li><a href="index.html#social">Kontak</a></li>
+        <li><a href="index.html#peta">Peta Blitar</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Redesain Web Jelajah Blitar by Kelompok 5</p>
+  </div>
+</footer>
+
+</body>
+</html>

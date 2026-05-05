@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sirah Kencong — Perkebunan Teh Blitar</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --accent: #b89a4e;
+  --text: #1e2820;
+  --muted: #6a7a6e;
+  --bg: #f5f7fa;
+}
+
+* {margin:0; padding:0; box-sizing:border-box;}
+
+body {
+  background: var(--bg);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+}
+
+.page {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 380px;
+}
+.hero img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter: brightness(.7);
+}
+.hero-text {
+  position:absolute;
+  bottom:40px;
+  left:40px;
+  color:white;
+}
+.hero-text h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size:2.8rem;
+}
+.hero-text p {
+  font-size:.95rem;
+  opacity:.85;
+}
+
+/* INFO */
+.info-strip {
+  display:flex;
+  flex-wrap:wrap;
+  padding:25px 40px;
+  border-bottom:1px solid #eee;
+}
+.info-item {
+  width:25%;
+  min-width:140px;
+}
+.info-label {
+  font-size:.7rem;
+  color:var(--muted);
+}
+.info-value {
+  font-weight:600;
+}
+
+/* CONTENT */
+.content {
+  padding:40px;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size:1.5rem;
+  margin:40px 0 12px;
+  position:relative;
+}
+.section-title::after {
+  content:'';
+  width:40px;
+  height:2px;
+  background:var(--accent);
+  position:absolute;
+  bottom:-6px;
+  left:0;
+}
+
+.text {
+  font-size:1rem;
+  line-height:1.8;
+  color:#374a3d;
+  margin-bottom:18px;
+  text-align:justify;
+}
+
+/* QUOTE */
+.highlight {
+  background:#f9fafc;
+  border-left:4px solid var(--accent);
+  padding:20px;
+  border-radius:10px;
+  margin:25px 0;
+  font-style: italic;
+}
+
+/* LIST */
+.activities {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+}
+.activities li {
+  list-style:none;
+}
+.activities li::before {
+  content:"• ";
+  color:var(--accent);
+}
+
+/* MAP */
+.map iframe {
+  width:100%;
+  height:300px;
+  border:0;
+  border-radius:10px;
+  margin-top:15px;
+}
+
+/* ===== FOOTER (DARI KODE PERTAMA) ===== */
+.main-footer {
+  padding: 60px 6% 30px;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-col-brand {
+  flex: 2;
+  min-width: 220px;
+}
+
+.footer-logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.footer-logo-area img {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.footer-logo-area h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1D3557;
+}
+
+.footer-contact p {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 150px;
+}
+
+.footer-col h3 {
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1D3557;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  text-decoration: none;
+  color: #555;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.footer-col ul li a:hover {
+  color: #E76F51;
+  padding-left: 4px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 18px;
+  border-top: 1px solid #e0e0e0;
+  color: #888;
+  font-size: 0.85rem;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<!-- HERO -->
+<div class="hero">
+  <img src="https://i.pinimg.com/736x/4e/af/d8/4eafd879219a52e010e34dbd7273103e.jpg">
+  <div class="hero-text">
+    <h1>Sirah Kencong</h1>
+    <p>Perkebunan Teh · Blitar, Jawa Timur</p>
+  </div>
+</div>
+
+<!-- INFO -->
+<div class="info-strip">
+  <div class="info-item">
+    <div class="info-label">Lokasi</div>
+    <div class="info-value">Wlingi, Blitar</div>
+  </div>
+  <div class="info-item">
+    <div class="info-label">Ketinggian</div>
+    <div class="info-value">±1.200 mdpl</div>
+  </div>
+  <div class="info-item">
+    <div class="info-label">Kategori</div>
+    <div class="info-value">Wisata Alam</div>
+  </div>
+  <div class="info-item">
+    <div class="info-label">Suasana</div>
+    <div class="info-value">Sejuk & Tenang</div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<h2 class="section-title">Tentang</h2>
+<p class="text">
+Perkebunan Teh Sirah Kencong merupakan salah satu destinasi wisata alam
+tersembunyi di Kabupaten Blitar yang menawarkan hamparan kebun teh luas
+dengan panorama pegunungan yang memukau. Berada di lereng Gunung Kelud,
+tempat ini menghadirkan udara sejuk serta pemandangan hijau yang menenangkan.
+</p>
+
+<p class="text">
+Dibangun sejak era kolonial Belanda, kebun teh ini tidak hanya menjadi tempat
+produksi teh, tetapi juga destinasi wisata favorit bagi pecinta alam dan fotografi.
+Kabut pagi yang menyelimuti area perkebunan menciptakan suasana magis yang sulit dilupakan.
+</p>
+
+<div class="highlight">
+"Berdiri di tengah hamparan teh Sirah Kencong seperti berada di atas awan —
+sunyi, sejuk, dan penuh ketenangan."
+</div>
+
+<h2 class="section-title">Aktivitas</h2>
+<ul class="activities">
+  <li>Menikmati panorama kebun teh</li>
+  <li>Fotografi alam & kabut pagi</li>
+  <li>Trekking ringan</li>
+  <li>Camping</li>
+  <li>Berburu sunrise</li>
+  <li>Mencicipi teh lokal</li>
+</ul>
+
+<h2 class="section-title">Keunggulan</h2>
+<p class="text">
+Keindahan Sirah Kencong terletak pada hamparan kebun teh yang luas,
+udara pegunungan yang segar, serta suasana alami yang masih sangat asri.
+Tempat ini cocok bagi siapa saja yang ingin melepas penat dari hiruk pikuk kota.
+</p>
+
+<h2 class="section-title">Lokasi</h2>
+<div class="map">
+<iframe
+src="https://www.google.com/maps?q=Perkebunan+Teh+Sirah+Kencong&output=embed">
+</iframe>
+</div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="main-footer">
+  <div class="footer-container">
+
+    <!-- BRAND -->
+    <div class="footer-col-brand">
+      <div class="footer-logo-area">
+        <img src="assets/images/jelajah-blitar.jpg" alt="Logo">
+        <h2>JELAJAH BLITAR</h2>
+      </div>
+      <div class="footer-contact">
+        <p>📞 0812-3439-4275</p>
+        <p>✉️ hello@jelajahblitar.com</p>
+      </div>
+    </div>
+
+    <!-- MENU -->
+    <div class="footer-col">
+      <h3>Menu</h3>
+      <ul>
+        <li><a href="index.html#destinasi">Wisata</a></li>
+        <li><a href="index.html#kuliner">Kuliner</a></li>
+        <li><a href="index.html#event">Event</a></li>
+      </ul>
+    </div>
+
+    <!-- LINK CEPAT -->
+    <div class="footer-col">
+      <h3>Link Cepat</h3>
+      <ul>
+        <li><a href="index.html#social">Kontak</a></li>
+        <li><a href="index.html#peta">Peta Blitar</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Redesain Web Jelajah Blitar by Kelompok 5</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>River Tubing Blitar — Petualangan Sungai</title>
+
+<link rel="icon" href="assets/images/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #1D3557;
+  --accent: #00A6FB;
+  --bg: #f5f7fa;
+  --radius: 14px;
+  --shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+* {margin:0;padding:0;box-sizing:border-box;}
+
+body {
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--bg);
+  color:#2a2a2a;
+  line-height:1.7;
+}
+
+.page {
+  max-width:920px;
+  margin:40px auto;
+  background:#fff;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+
+/* HERO */
+.hero {
+  position:relative;
+  height:420px;
+}
+
+.hero img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(.78);
+}
+
+.hero-text {
+  position:absolute;
+  bottom:36px;
+  left:36px;
+  color:#fff;
+}
+
+.hero-text h1 {
+  font-size:2.4rem;
+}
+
+.hero-text .sub {
+  margin-top:6px;
+  opacity:.9;
+}
+
+/* INFO */
+.info-strip {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  padding:24px 36px;
+  border-bottom:1px solid #eee;
+  text-align:center;
+}
+
+.info-label {
+  font-size:.7rem;
+  color:#888;
+  text-transform:uppercase;
+}
+
+.info-value {
+  font-weight:600;
+  color:var(--primary);
+  margin-top:4px;
+}
+
+/* CONTENT */
+.content {padding:42px;}
+
+.section-title {
+  font-size:.8rem;
+  font-weight:700;
+  color:var(--accent);
+  margin:38px 0 12px;
+  text-transform:uppercase;
+}
+
+.text {
+  font-size:.95rem;
+  color:#555;
+  text-align:justify;
+  margin-bottom:14px;
+}
+
+/* ACTIVITY */
+.activity-box {
+  background:#f0fbff;
+  border-left:4px solid var(--accent);
+  padding:20px;
+  border-radius:10px;
+}
+
+.activities {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.activities li {
+  list-style:none;
+  font-size:.93rem;
+}
+
+.activities li::before {
+  content:"• ";
+  color:var(--accent);
+}
+
+/* PACKAGE */
+.package-card {
+  border:1px solid #eee;
+  padding:20px;
+  border-radius:12px;
+  margin-top:14px;
+  box-shadow:var(--shadow);
+}
+
+/* EVENT (tanpa gambar) */
+.event-card {
+  border:1px solid #eee;
+  border-radius:12px;
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+
+.event-title {
+  font-weight:700;
+  color:var(--primary);
+  margin-bottom:6px;
+}
+
+.event-desc {
+  font-size:.92rem;
+  color:#666;
+}
+
+/* MAP */
+.map iframe {
+  width:100%;
+  height:300px;
+  border:0;
+  border-radius:10px;
+}
+
+/* WHATSAPP */
+.wa-btn {
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  background:#25D366;
+  color:#fff;
+  padding:14px 18px;
+  border-radius:50px;
+  display:flex;
+  gap:10px;
+  font-weight:600;
+  text-decoration:none;
+  animation:bounce 2s infinite;
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+
+@keyframes bounce {
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-5px);}
+}
+
+/* FOOTER (SAMA SEPERTI SEBELUMNYA) */
+.main-footer {
+  padding:50px 6% 28px;
+  background:#fafafa;
+  border-top:1px solid #eee;
+}
+
+.footer-container {
+  display:flex;
+  flex-wrap:wrap;
+  gap:40px;
+  justify-content:space-between;
+  max-width:1400px;
+  margin:0 auto;
+}
+
+.footer-col-brand {
+  flex:2;
+  min-width:220px;
+}
+
+.footer-logo-area {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.footer-logo-area img {
+  width:42px;
+  height:auto;
+  border-radius:6px;
+}
+
+.footer-logo-area h2 {
+  font-size:1.05rem;
+  font-weight:600;
+  color:var(--primary);
+}
+
+.footer-contact p {
+  color:#666;
+  font-size:.9rem;
+  margin-bottom:6px;
+}
+
+.footer-col {
+  flex:1;
+  min-width:130px;
+}
+
+.footer-col h3 {
+  margin-bottom:14px;
+  font-size:.9rem;
+  font-weight:600;
+  color:var(--primary);
+}
+
+.footer-col ul {
+  list-style:none;
+}
+
+.footer-col ul li {
+  margin-bottom:8px;
+}
+
+.footer-col ul li a {
+  text-decoration:none;
+  color:#555;
+  font-size:.875rem;
+}
+
+.footer-col ul li a:hover {
+  color:var(--accent);
+}
+
+.footer-bottom {
+  text-align:center;
+  margin-top:32px;
+  padding-top:20px;
+  border-top:1px solid #e0e0e0;
+  color:#888;
+  font-size:.82rem;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<!-- HERO -->
+<div class="hero">
+  <img src="assets/images/river-tubing.jpg">
+  <div class="hero-text">
+    <h1>River Tubing Blitar</h1>
+    <div class="sub">Petualangan Sungai & Alam</div>
+  </div>
+</div>
+
+<!-- INFO -->
+<div class="info-strip">
+  <div><div class="info-label">Lokasi</div><div class="info-value">Blitar</div></div>
+  <div><div class="info-label">Kategori</div><div class="info-value">Adventure</div></div>
+  <div><div class="info-label">Durasi</div><div class="info-value">1–2 Jam</div></div>
+  <div><div class="info-label">Level</div><div class="info-value">Menengah</div></div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <div class="section-title">Tentang</div>
+  <p class="text">
+    River Tubing Blitar adalah aktivitas menyusuri sungai alami menggunakan ban pelampung.
+    Arus sungai yang bervariasi memberikan sensasi santai sekaligus menantang di tengah suasana alam yang masih asri.
+  </p>
+
+  <div class="section-title">Aktivitas</div>
+  <div class="activity-box">
+    <ul class="activities">
+      <li>Susur Sungai</li>
+      <li>Arus Alami</li>
+      <li>Spot Foto Alam</li>
+      <li>Petualangan Air</li>
+    </ul>
+  </div>
+
+  <div class="section-title">Paket</div>
+  <div class="package-card">
+    Info Paket River Tubing<br><br>
+    Harga per orang (pax).<br>
+    Tarif dapat berubah sewaktu-waktu.<br>
+    Diskon rombongan minimal 40 orang.
+  </div>
+
+  <div class="section-title">Event</div>
+  <div class="event-card">
+    <div class="event-title">River Adventure Experience</div>
+    <div class="event-desc">
+      Kegiatan tubing bersama komunitas dengan suasana lebih seru, dipadukan dengan permainan air dan tantangan ringan di sungai.
+    </div>
+  </div>
+
+  <div class="section-title">Lokasi</div>
+  <div class="map">
+    <iframe src="https://www.google.com/maps?q=-7.9663914,112.3636641&output=embed"></iframe>
+  </div>
+
+</div>
+</div>
+
+<!-- WHATSAPP -->
+<a class="wa-btn" href="https://api.whatsapp.com/send/?phone=6281234394275" target="_blank">
+  Booking WhatsApp
+</a>
+
+<!-- FOOTER -->
+<footer class="main-footer">
+  <div class="footer-container">
+
+    <!-- BRAND -->
+    <div class="footer-col-brand">
+      <div class="footer-logo-area">
+        <img src="assets/images/jelajah-blitar.jpg" alt="Logo">
+        <h2>JELAJAH BLITAR</h2>
+      </div>
+      <div class="footer-contact">
+        <p>📞 0812-3439-4275</p>
+        <p>✉️ hello@jelajahblitar.com</p>
+      </div>
+    </div>
+
+    <!-- MENU -->
+    <div class="footer-col">
+      <h3>Menu</h3>
+      <ul>
+        <li><a href="index.html#destinasi">Wisata</a></li>
+        <li><a href="index.html#kuliner">Kuliner</a></li>
+        <li><a href="index.html#event">Event</a></li>
+      </ul>
+    </div>
+
+    <!-- LINK CEPAT -->
+    <div class="footer-col">
+      <h3>Link Cepat</h3>
+      <ul>
+        <li><a href="index.html#social">Kontak</a></li>
+        <li><a href="index.html#peta">Peta Blitar</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Redesain Web Jelajah Blitar by Kelompok 5</p>
+  </div>
+</footer>
+
+</body>
+</html>

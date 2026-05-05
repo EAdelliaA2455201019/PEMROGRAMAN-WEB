@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nasi Pecel Blitar</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --text:#1e2820;
+  --muted:#6a7a6e;
+  --bg:#f5f7fa;
+  --accent:#2d5016;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  background:var(--bg);
+  font-family:'DM Sans',sans-serif;
+  color:var(--text);
+}
+
+/* CONTAINER */
+.page{
+  max-width:900px;
+  margin:40px auto;
+  background:#fff;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 6px 20px rgba(0,0,0,.08);
+}
+
+/* HERO */
+.hero{
+  position:relative;
+  height:380px;
+}
+
+.hero img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(.7);
+}
+
+.hero-text{
+  position:absolute;
+  bottom:40px;
+  left:40px;
+  color:white;
+}
+
+.hero-text h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.8rem;
+}
+
+.hero-text p{
+  font-size:.95rem;
+  opacity:.85;
+}
+
+/* INFO STRIP */
+.info-strip{
+  display:flex;
+  flex-wrap:wrap;
+  padding:25px 40px;
+  border-bottom:1px solid #eee;
+}
+
+.info-item{
+  width:25%;
+  min-width:140px;
+}
+
+.info-label{
+  font-size:.7rem;
+  color:var(--muted);
+}
+
+.info-value{
+  font-weight:600;
+}
+
+/* CONTENT */
+.content{
+  padding:40px;
+}
+
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;
+  margin:40px 0 12px;
+  position:relative;
+}
+
+.section-title::after{
+  content:'';
+  width:40px;
+  height:2px;
+  background:var(--accent);
+  position:absolute;
+  bottom:-6px;
+  left:0;
+}
+
+.text{
+  font-size:1rem;
+  line-height:1.8;
+  color:#374a3d;
+  margin-bottom:18px;
+  text-align:justify;
+}
+
+/* QUOTE */
+.highlight{
+  background:#f9fafc;
+  border-left:4px solid var(--accent);
+  padding:20px;
+  border-radius:10px;
+  margin:25px 0;
+  font-style: italic;
+}
+
+/* LIST */
+.activities{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+}
+
+.activities li{
+  list-style:none;
+}
+
+.activities li::before{
+  content:"• ";
+  color:var(--accent);
+}
+
+/* MAP */
+.map iframe{
+  width:100%;
+  height:300px;
+  border:0;
+  border-radius:10px;
+  margin-top:15px;
+}
+
+/* ===== FOOTER */
+.main-footer {
+  padding: 60px 6% 30px;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-col-brand {
+  flex: 2;
+  min-width: 220px;
+}
+
+.footer-logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.footer-logo-area img {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.footer-logo-area h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1D3557;
+}
+
+.footer-contact p {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 150px;
+}
+
+.footer-col h3 {
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1D3557;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  text-decoration: none;
+  color: #555;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.footer-col ul li a:hover {
+  color: #E76F51;
+  padding-left: 4px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 18px;
+  border-top: 1px solid #e0e0e0;
+  color: #888;
+  font-size: 0.85rem;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<!-- HERO -->
+<div class="hero">
+  <img src="https://i.pinimg.com/736x/ed/10/e9/ed10e982a2c2627bf08bceaa8aef4605.jpg">
+  <div class="hero-text">
+    <h1>Nasi Pecel</h1>
+    <p>Kuliner Tradisional · Blitar</p>
+  </div>
+</div>
+
+<!-- INFO -->
+<div class="info-strip">
+  <div class="info-item">
+    <div class="info-label">Lokasi</div>
+    <div class="info-value">Blitar</div>
+  </div>
+  <div class="info-item">
+    <div class="info-label">Kategori</div>
+    <div class="info-value">Kuliner</div>
+  </div>
+  <div class="info-item">
+    <div class="info-label">Cocok</div>
+    <div class="info-value">Sarapan</div>
+  </div>
+  <div class="info-item">
+    <div class="info-label">Suasana</div>
+    <div class="info-value">Tradisional</div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<h2 class="section-title">Tentang</h2>
+<p class="text">
+Nasi Pecel adalah makanan khas Blitar yang terkenal dengan sambal kacangnya yang gurih dan khas. Disajikan dengan berbagai sayuran segar seperti bayam, kacang panjang, dan tauge, menjadikan hidangan ini sehat sekaligus lezat.
+</p>
+
+<p class="text">
+Hidangan ini biasanya disantap saat pagi hari sebagai sarapan favorit masyarakat. Rasa sederhana namun kaya membuat nasi pecel selalu dirindukan.
+</p>
+
+<div class="highlight">
+"Nasi Pecel adalah rasa sederhana yang selalu membawa pulang kenangan."
+</div>
+
+<h2 class="section-title">Aktivitas</h2>
+<ul class="activities">
+  <li>Wisata kuliner</li>
+  <li>Sarapan khas daerah</li>
+  <li>Fotografi makanan</li>
+  <li>Menikmati suasana tradisional</li>
+</ul>
+
+<h2 class="section-title">Keunggulan</h2>
+<p class="text">
+Keunggulan Nasi Pecel terletak pada sambalnya yang khas, bahan yang segar, dan harga yang terjangkau. Cocok untuk semua kalangan.
+</p>
+
+<h2 class="section-title">Lokasi</h2>
+<div class="map">
+ <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.946!2d112.173999!3d-8.0997681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78ec71d5830e03%3A0x4a144860b1fd7b13!2sNasi%20Pecel%20Mbok%20Bari%203!5e0!3m2!1sid!2sid!4v1710000000000"
+            allowfullscreen=""
+            loading="lazy"
+            title="Lokasi Nasi Pecel Mbok Bari Blitar">
+        </iframe>
+</div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="main-footer">
+  <div class="footer-container">
+
+    <!-- BRAND -->
+    <div class="footer-col-brand">
+      <div class="footer-logo-area">
+        <img src="assets/images/jelajah-blitar.jpg" alt="Logo">
+        <h2>JELAJAH BLITAR</h2>
+      </div>
+      <div class="footer-contact">
+        <p>📞 0812-3439-4275</p>
+        <p>✉️ hello@jelajahblitar.com</p>
+      </div>
+    </div>
+
+    <!-- MENU -->
+    <div class="footer-col">
+      <h3>Menu</h3>
+      <ul>
+        <li><a href="index.html#destinasi">Wisata</a></li>
+        <li><a href="index.html#kuliner">Kuliner</a></li>
+        <li><a href="index.html#event">Event</a></li>
+      </ul>
+    </div>
+
+    <!-- LINK CEPAT -->
+    <div class="footer-col">
+      <h3>Link Cepat</h3>
+      <ul>
+        <li><a href="index.html#social">Kontak</a></li>
+        <li><a href="index.html#peta">Peta Blitar</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Redesain Web Jelajah Blitar by Kelompok 5</p>
+  </div>
+</footer>
+
+</body>
+</html>

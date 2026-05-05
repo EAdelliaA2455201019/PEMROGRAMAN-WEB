@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candi Penataran — Wisata Sejarah Blitar</title>
+
+    <link rel="icon" href="assets/images/favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* (STYLE TETAP SAMA — TIDAK DIUBAH) */
+        :root {
+            --primary: #ffffff;
+            --accent: #FF7B54;
+            --muted: #6c6c6c;
+            --light-bg: #f5f7fa;
+            --radius: 14px;
+            --shadow: 0px 4px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--light-bg);
+            color: #2a2a2a;
+            line-height: 1.7;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .hero {
+            position: relative;
+            height: 420px;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(.75);
+        }
+
+        .hero-text {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            color: white;
+        }
+
+        .hero-text h1 {
+            font-size: 2.6rem;
+        }
+
+        .hero-text .sub {
+            margin-top: 6px;
+            opacity: .9;
+        }
+
+        .info-strip {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 25px 40px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-item {
+            width: 25%;
+            min-width: 140px;
+        }
+
+        .info-label {
+            font-size: .75rem;
+            color: var(--muted);
+        }
+
+        .info-value {
+            font-weight: 600;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section-title {
+            font-size: .85rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 40px 0 14px;
+        }
+
+        .text {
+            margin-bottom: 14px;
+            color: #555;
+            text-align: justify;
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+            border-radius: 10px;
+        }
+
+        .wa-btn {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            background: #25D366;
+            color: white;
+            padding: 14px 18px;
+            border-radius: 50px;
+            text-decoration: none;
+        }
+
+        main-footer {
+  padding: 60px 6% 30px;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-col-brand {
+  flex: 2;
+  min-width: 220px;
+}
+
+.footer-logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.footer-logo-area img {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.footer-logo-area h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1D3557;
+}
+
+.footer-contact p {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 150px;
+}
+
+.footer-col h3 {
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1D3557;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  text-decoration: none;
+  color: #555;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.footer-col ul li a:hover {
+  color: #E76F51;
+  padding-left: 4px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 18px;
+  border-top: 1px solid #e0e0e0;
+  color: #888;
+  font-size: 0.85rem;
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+
+        <!-- HERO -->
+        <div class="hero">
+            <img src="https://i.pinimg.com/1200x/b1/7e/9a/b17e9aaff9df36e23bd60b00260b697f.jpg">
+            <div class="hero-text">
+                <h1>Candi Penataran</h1>
+                <div class="sub">Wisata Sejarah · Blitar</div>
+            </div>
+        </div>
+
+        <!-- INFO -->
+        <div class="info-strip">
+            <div class="info-item">
+                <div class="info-label">Lokasi</div>
+                <div class="info-value">Nglegok</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Kategori</div>
+                <div class="info-value">Candi</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Cocok</div>
+                <div class="info-value">Edukasi</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Suasana</div>
+                <div class="info-value">Sejarah & Tenang</div>
+            </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="content">
+
+            <div class="section-title">Tentang</div>
+            <p class="text">
+                Candi Penataran merupakan kompleks candi Hindu terbesar di Jawa Timur yang berada di Kabupaten Blitar.
+                Candi ini dibangun pada masa Kerajaan Kediri dan berkembang hingga masa Majapahit.
+            </p>
+
+            <p class="text">
+                Kompleks ini menjadi pusat kegiatan keagamaan Hindu pada masa lampau dan memiliki nilai sejarah yang
+                sangat tinggi.
+            </p>
+
+            <div class="section-title">Keunggulan</div>
+            <p class="text">
+                Candi Penataran memiliki arsitektur yang megah dengan relief cerita Ramayana dan Krishnayana yang
+                terpahat indah.
+                Selain itu, suasana kawasan candi yang asri membuat tempat ini cocok untuk wisata edukasi dan sejarah.
+            </p>
+
+            <div class="section-title">Lokasi</div>
+            <div class="map">
+            <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.181!2d112.207154!3d-8.0162924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78f299e69b8cd1%3A0x52eb091bf02148b8!2sPenataran%20Temple!5e0!3m2!1sid!2sid!4v1710000000000"
+            allowfullscreen=""
+            loading="lazy"
+            title="Lokasi Candi Penataran">
+        </iframe>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- WHATSAPP -->
+    <a class="wa-btn" href="https://api.whatsapp.com/send/?phone=6281234394275" target="_blank">
+        Booking WhatsApp
+    </a>
+
+<!-- FOOTER -->
+<footer class="main-footer">
+  <div class="footer-container">
+
+    <!-- BRAND -->
+    <div class="footer-col-brand">
+      <div class="footer-logo-area">
+        <img src="assets/images/jelajah-blitar.jpg" alt="Logo">
+        <h2>JELAJAH BLITAR</h2>
+      </div>
+      <div class="footer-contact">
+        <p>📞 0812-3439-4275</p>
+        <p>✉️ hello@jelajahblitar.com</p>
+      </div>
+    </div>
+
+    <!-- MENU -->
+    <div class="footer-col">
+      <h3>Menu</h3>
+      <ul>
+        <li><a href="index.html#destinasi">Wisata</a></li>
+        <li><a href="index.html#kuliner">Kuliner</a></li>
+        <li><a href="index.html#event">Event</a></li>
+      </ul>
+    </div>
+
+    <!-- LINK CEPAT -->
+    <div class="footer-col">
+      <h3>Link Cepat</h3>
+      <ul>
+        <li><a href="index.html#social">Kontak</a></li>
+        <li><a href="index.html#peta">Peta Blitar</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Redesain Web Jelajah Blitar by Kelompok 5</p>
+  </div>
+</footer>
+
+</body>
+</html>
